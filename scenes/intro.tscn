@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnqv6lnvwxyty"]
+[gd_scene load_steps=4 format=3 uid="uid://bnyx7k8mxssfo"]
 
 [ext_resource type="Texture2D" uid="uid://2y4idw68h0wi" path="res://assets/bg.png" id="1_58gnm"]
-[ext_resource type="Texture2D" path="res://assets/title2.png" id="1_fkj17"]
 
 [sub_resource type="Animation" id="Animation_rjfkb"]
 resource_name = "descend"
@@ -47,7 +46,6 @@ libraries = {
 [node name="title" type="Sprite2D" parent="Background/ParallaxLayer/anim"]
 position = Vector2(167, 148)
 scale = Vector2(0.178646, 0.208407)
-texture = ExtResource("1_fkj17")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false

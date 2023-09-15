@@ -1,27 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr6aaydtv8qpm"]
+[gd_scene load_steps=4 format=3 uid="uid://b77e2sp5ruhpi"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fu20l"]
-[ext_resource type="Texture2D" uid="uid://cy0cvfafofgwd" path="res://assets/kenney_space-shooter-redux/PNG/playerShip2_red.png" id="1_sqxb4"]
+[ext_resource type="Texture2D" uid="uid://d4mwhsxx3r7x8" path="res://assets/mcafeelogo.png" id="2_ev1am"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qya6"]
+size = Vector2(20, 19)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(0, -9.53674e-07)
-scale = Vector2(0.4, 0.4)
 collision_mask = 22
 motion_mode = 1
 script = ExtResource("1_fu20l")
 
 [node name="Texture" type="Sprite2D" parent="." groups=["player"]]
 position = Vector2(0.1, 0)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_sqxb4")
-
-[node name="Collision" type="CollisionPolygon2D" parent="." groups=["player"]]
-position = Vector2(0.100002, 1.90735e-06)
-polygon = PackedVector2Array(-1, -8, 1, -8, 2, -4, 11, 1, 7, 7, 3, 6, 2, 7, -2, 7, -3, 6, -7, 7, -11, 1, -2, -4)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ev1am")
 
 [node name="Muzzle" type="Marker2D" parent="." groups=["player"]]
 position = Vector2(0, -12.5)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+visible = false
+enabled = false
 position_smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_5qya6")
