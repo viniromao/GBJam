@@ -1,3 +1,55 @@
-[gd_scene format=3 uid="uid://bnyx7k8mxssfo"]
+[gd_scene load_steps=5 format=3 uid="uid://bnqv6lnvwxyty"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://2y4idw68h0wi" path="res://assets/bg.png" id="1_58gnm"]
+[ext_resource type="Texture2D" path="res://assets/title2.png" id="1_fkj17"]
+
+[sub_resource type="Animation" id="Animation_rjfkb"]
+resource_name = "descend"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim/title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(167, -11), Vector2(167, 148)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i2gd2"]
+_data = {
+"descend": SubResource("Animation_rjfkb")
+}
+
+[node name="intro" type="Node2D"]
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="background" type="ParallaxLayer" parent="Background"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/background"]
+position = Vector2(159.935, 144.192)
+rotation = -1.5708
+scale = Vector2(0.601131, 1.19141)
+texture = ExtResource("1_58gnm")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+
+[node name="anim" type="AnimationPlayer" parent="Background/ParallaxLayer"]
+autoplay = "descend"
+libraries = {
+"": SubResource("AnimationLibrary_i2gd2")
+}
+
+[node name="title" type="Sprite2D" parent="Background/ParallaxLayer/anim"]
+position = Vector2(167, 148)
+scale = Vector2(0.178646, 0.208407)
+texture = ExtResource("1_fkj17")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(80, 73)
+enabled = false

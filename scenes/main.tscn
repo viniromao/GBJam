@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnyx7k8mxssfo"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_77da5"]
+[ext_resource type="PackedScene" uid="uid://cr6aaydtv8qpm" path="res://actors/player.tscn" id="2_1ngoq"]
+[ext_resource type="PackedScene" uid="uid://5rqvlkajc6ou" path="res://scenes/laser.tscn" id="3_rf63e"]
+[ext_resource type="Texture2D" uid="uid://rlmipaih1g7a" path="res://assets/kenney_space-shooter-redux/Backgrounds/purple.png" id="4_he6ju"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_77da5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(160.017, 144.972)
+rotation = 1.5708
+scale = Vector2(1.12634, 1.2517)
+texture = ExtResource("4_he6ju")
+
+[node name="Texture" parent="." instance=ExtResource("2_1ngoq")]
+position = Vector2(29, 80)
+rotation = 1.5708
+
+[node name="PlayerSpawnPos" type="Marker2D" parent="."]
+position = Vector2(21, 80)
+scale = Vector2(0.731204, 0.278042)
+
+[node name="Laser" parent="." instance=ExtResource("3_rf63e")]
+
+[node name="LaserContainer" type="Node2D" parent="."]
