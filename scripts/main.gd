@@ -10,6 +10,7 @@ func pad_with_zeros(number, width):
 	return str_num
 
 var score = 0
+var lives = 3
 
 var timer = 0
 @export var spawnTime = .5
@@ -30,6 +31,8 @@ func _ready():
 func _process(delta):
 	var padded_score = pad_with_zeros(score, 8) 
 	$score.text = "scr: " + padded_score
+	var padded_lives = pad_with_zeros(lives, 2) 
+	$lives.text = "<" + padded_lives
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("reset"):
@@ -54,7 +57,9 @@ func spawnThings(delta):
 	
 
 func increase_score(value):
-	print(score)
 	score += value
+	
+func decrease_lives():
+	lives -= 1
 
 

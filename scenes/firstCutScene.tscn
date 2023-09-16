@@ -1,0 +1,179 @@
+[gd_scene load_steps=13 format=3 uid="uid://ceebhywk43664"]
+
+[ext_resource type="Script" path="res://scripts/firstCutScene.gd" id="1_d73qg"]
+[ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_b78xm"]
+[ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="3_j8plv"]
+[ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_b8uh1"]
+[ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="5_123bm"]
+[ext_resource type="Texture2D" uid="uid://b3cmubkg8vno8" path="res://assets/ie.png" id="6_oej7v"]
+[ext_resource type="Texture2D" uid="uid://d4mwhsxx3r7x8" path="res://assets/mcafeelogo.png" id="7_d0fta"]
+[ext_resource type="Texture2D" uid="uid://cmmb6j0qyyic0" path="res://assets/cursor.png" id="8_l7wvp"]
+[ext_resource type="Texture2D" uid="uid://d3drfhuwbfyw8" path="res://assets/alert.png" id="9_gefyt"]
+[ext_resource type="Texture2D" uid="uid://1kvjq36ghff" path="res://assets/popup.png" id="9_p0je4"]
+[ext_resource type="Texture2D" uid="uid://c5br2tvv7h50p" path="res://assets/button.png" id="10_dqcyd"]
+[ext_resource type="Texture2D" uid="uid://cd0lkm8r8m3uh" path="res://assets/terminal.png" id="11_t2hle"]
+
+[node name="firstCutScene" type="Node2D"]
+script = ExtResource("1_d73qg")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(80, 72)
+texture = ExtResource("2_b78xm")
+
+[node name="task_bar" type="Sprite2D" parent="."]
+position = Vector2(80, 137)
+texture = ExtResource("3_j8plv")
+
+[node name="score" type="Label" parent="."]
+visible = false
+offset_left = 27.0
+offset_top = 134.0
+offset_right = 220.0
+offset_bottom = 191.0
+scale = Vector2(0.3, 0.297)
+theme_override_fonts/font = ExtResource("4_b8uh1")
+text = "scr:  "
+
+[node name="Label" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 37.0
+offset_right = 277.0
+offset_bottom = 94.0
+scale = Vector2(0.399589, 0.395951)
+theme_override_fonts/font = ExtResource("5_123bm")
+text = "anti
+virus
+
+"
+
+[node name="lives" type="Label" parent="."]
+visible = false
+offset_left = 99.0
+offset_top = 133.0
+offset_right = 242.0
+offset_bottom = 190.0
+scale = Vector2(0.3, 0.297)
+theme_override_fonts/font = ExtResource("4_b8uh1")
+text = "<3"
+
+[node name="trash_icon" type="Sprite2D" parent="."]
+position = Vector2(17, 68)
+texture = ExtResource("6_oej7v")
+
+[node name="Label" type="Label" parent="trash_icon"]
+offset_left = -16.0
+offset_top = 8.0
+offset_right = 256.0
+offset_bottom = 46.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("5_123bm")
+text = "trash
+
+"
+
+[node name="internet_icon" type="Sprite2D" parent="."]
+position = Vector2(16, 97)
+texture = ExtResource("6_oej7v")
+
+[node name="Label" type="Label" parent="internet_icon"]
+offset_left = -7.0
+offset_top = 8.0
+offset_right = 265.0
+offset_bottom = 46.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("5_123bm")
+text = "net
+
+"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 72)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="icon" type="Sprite2D" parent="."]
+position = Vector2(18, 25)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_d0fta")
+
+[node name="Popup" type="Sprite2D" parent="."]
+position = Vector2(82, 76)
+scale = Vector2(1.2, 1)
+texture = ExtResource("9_p0je4")
+
+[node name="alert" type="Label" parent="Popup"]
+offset_left = -25.0
+offset_top = -11.0
+offset_right = 254.0
+offset_bottom = 46.0
+scale = Vector2(0.2, 0.198)
+theme_override_fonts/font = ExtResource("5_123bm")
+text = "Can't open. Your 
+machine does not
+have enough SPACE
+"
+horizontal_alignment = 1
+
+[node name="Alert" type="Sprite2D" parent="Popup"]
+position = Vector2(-30, -6)
+scale = Vector2(0.833333, 1)
+texture = ExtResource("9_gefyt")
+
+[node name="Button" type="Sprite2D" parent="Popup"]
+position = Vector2(-0.833328, 8)
+scale = Vector2(0.833333, 1)
+texture = ExtResource("10_dqcyd")
+
+[node name="buttonOk" type="Label" parent="Popup"]
+offset_left = -4.16663
+offset_top = 6.0
+offset_right = 411.833
+offset_bottom = 63.0
+scale = Vector2(0.2, 0.198)
+theme_override_fonts/font = ExtResource("5_123bm")
+text = "OK
+"
+
+[node name="Terminal" type="Sprite2D" parent="."]
+position = Vector2(80, 72)
+texture = ExtResource("11_t2hle")
+
+[node name="terminalText" type="Label" parent="Terminal"]
+offset_left = -54.0
+offset_top = -64.0
+offset_right = 362.0
+offset_bottom = -7.00001
+scale = Vector2(0.2, 0.198)
+theme_override_fonts/font = ExtResource("5_123bm")
+text = "Changes not staged for commit:
+  (use \"git add <file>...\" to 
+update what will be committed)
+  (use \"git restore <file>...\" to 
+discard changes in working 
+directory)
+    modified:   scripts/main.gd
+    modified:   scripts/player.gd
+Untracked files:
+  (use \"git add <file>...\" to
+include in what will be committed)
+     assets/alert.png
+     assets/alert.png.import
+     assets/button.png
+     assets/button.png.import
+     assets/cursor.png
+     assets/cursor.png.import
+     assets/popup.png
+     assets/popup.png.import
+     assets/terminal.png
+     assets/terminal.png.import
+     scenes/firstCutScene.tscn
+     scripts/firstCutScene.gd
+
+no changes added to commit (use 
+\"git add\" and/or \"git commit -a\")
+PS C:\\Users\\vinir\\OneDrive\\
+Desktop\\GBJam>"
+
+[node name="Cursor" type="Sprite2D" parent="."]
+position = Vector2(86, 79)
+texture = ExtResource("8_l7wvp")

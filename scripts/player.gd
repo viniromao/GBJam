@@ -33,7 +33,8 @@ func shoot():
 
 func take_damage():
 	lives -= 1
-	print(lives)
+	var main_script = get_tree().get_root().get_node("main")
+	main_script.decrease_lives()
 	if (lives <= 0):
 		die()
 
