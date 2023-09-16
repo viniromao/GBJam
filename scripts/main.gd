@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var spawn_player_pos = $PlayerSpawnPos
 @onready var laser_container = $LaserContainer
+@onready var gos = $UILayer/GameOver
 
 func pad_with_zeros(number, width):
 	var str_num = str(number)
@@ -27,6 +28,7 @@ func _ready():
 	assert(player != null)
 	player.global_position = spawn_player_pos.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
+	player.killed.connect(_on_player_killed)
 
 func _process(delta):
 	var padded_score = pad_with_zeros(score, 8) 
@@ -62,4 +64,6 @@ func increase_score(value):
 func decrease_lives():
 	lives -= 1
 
-
+func _on_player_killed():
+	await get_tree().create_timer(0.5).timeout
+	gos.visible = true

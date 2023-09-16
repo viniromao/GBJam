@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ceebhywk43664"]
+[gd_scene load_steps=13 format=3 uid="uid://bpbiseieir8f4"]
 
 [ext_resource type="Script" path="res://scripts/firstCutScene.gd" id="1_d73qg"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_b78xm"]
