@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="4_lksie"]
 [ext_resource type="Texture2D" uid="uid://b3cmubkg8vno8" path="res://assets/ie.png" id="5_v381v"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="6_0uth1"]
-[ext_resource type="PackedScene" uid="uid://6ekrbeoo1ite" path="res://scenes/enemy.tscn" id="7_llaly"]
+[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="7_llaly"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_77da5")
@@ -77,3 +77,4 @@ position_smoothing_enabled = true
 
 [node name="Enemy" parent="." instance=ExtResource("7_llaly")]
 position = Vector2(136, 26)
+speed = null

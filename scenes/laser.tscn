@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://5rqvlkajc6ou"]
+[gd_scene load_steps=4 format=3 uid="uid://bslgungkc5dsp"]
 
 [ext_resource type="Script" path="res://scripts/laser.gd" id="1_3whqs"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a3cy5"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_58ksg"]
 load_path = "res://.godot/imported/laserBlue01.png-0af2a68fa89682c9a2318cee1a257770.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mk87i"]
@@ -11,15 +11,12 @@ height = 10.0
 
 [node name="Laser" type="Area2D"]
 position = Vector2(0, 2)
-rotation = 1.5708
-collision_layer = 4
-collision_mask = 2
 script = ExtResource("1_3whqs")
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
 scale = Vector2(0.194444, 0.189815)
-texture = SubResource("CompressedTexture2D_a3cy5")
+texture = SubResource("CompressedTexture2D_58ksg")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
@@ -29,5 +26,4 @@ shape = SubResource("CapsuleShape2D_mk87i")
 position = Vector2(0, 1)
 scale = Vector2(0.1, 0.075)
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
