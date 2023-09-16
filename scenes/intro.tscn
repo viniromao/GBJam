@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch04vu44neo35"]
+
+[ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="2_5esxe"]
+
+[sub_resource type="GDScript" id="GDScript_qbruq"]
+script/source = "extends Control
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Timer.start()  # Start the Timer when the scene loads.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _on_timer_timeout():
+	get_tree().change_scene_to_file(\"res://scenes/copyright.tscn\")
+"
+
+[sub_resource type="Animation" id="Animation_tqjij"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim/text:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sljoa"]
+resource_name = "descend"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim/text:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(41, -20), Vector2(41, 55)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("anim/text:theme_override_colors/font_color")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0iu01"]
+_data = {
+"RESET": SubResource("Animation_tqjij"),
+"descend": SubResource("Animation_sljoa")
+}
+
+[node name="intro" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_qbruq")
+
+[node name="Sprite2D" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 144.0
+color = Color(0.835294, 0.980392, 0.815686, 1)
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "descend"
+libraries = {
+"": SubResource("AnimationLibrary_0iu01")
+}
+
+[node name="text" type="Label" parent="anim"]
+offset_left = 41.0
+offset_top = -20.0
+offset_right = 141.0
+offset_bottom = 8.00005
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5esxe")
+theme_override_font_sizes/font_size = 16
+text = "GBJam"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 72)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

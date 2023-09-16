@@ -16,8 +16,6 @@ func _ready():
 	$textTimer.set_wait_time(0.05)
 	var timer = get_node("textTimer")
 	timer.timeout.connect(_on_textTimer_timeout)
-	
-	
 
 func _process(delta):
 	if !isMovingToPosition2:
