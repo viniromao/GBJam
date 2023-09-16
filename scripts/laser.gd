@@ -10,8 +10,9 @@ func _on_area_entered(area):
 	if area is Enemy:
 		area.die()
 		queue_free()
-
-
+		
+		var main_script = get_tree().get_root().get_node("main")
+		main_script.increase_score(20)
 
 func _on_visible_on_screen_enabler_2d_screen_exited():
 	queue_free()

@@ -5,6 +5,7 @@ signal killed
 
 @export var speed = 100
 @export var rate_of_fire := 0.25
+@export var lives := 3
 
 @onready var muzzle = $Muzzle
 
@@ -29,6 +30,12 @@ func _physics_process(delta):
 
 func shoot():
 	laser_shot.emit(laser_scene, muzzle.global_position)
+
+func take_damage():
+	lives -= 1
+	print(lives)
+	if (lives <= 0):
+		die()
 
 func die():
 	killed.emit()

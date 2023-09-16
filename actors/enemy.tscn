@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyi3pai6uxy7m"]
+[gd_scene load_steps=4 format=3 uid="uid://6ekrbeoo1ite"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_3d4dd"]
-[ext_resource type="Texture2D" path="res://assets/virus.png" id="1_326nb"]
+[ext_resource type="Texture2D" uid="uid://b3cmubkg8vno8" path="res://assets/ie.png" id="2_ivkvr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6qh5"]
 size = Vector2(16, 16)
@@ -12,7 +12,7 @@ collision_mask = 5
 script = ExtResource("1_3d4dd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_326nb")
+texture = ExtResource("2_ivkvr")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

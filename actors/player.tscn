@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b77e2sp5ruhpi"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fu20l"]
-[ext_resource type="Texture2D" path="res://assets/mcafeelogo.png" id="2_ev1am"]
+[ext_resource type="Texture2D" uid="uid://d4mwhsxx3r7x8" path="res://assets/mcafeelogo.png" id="2_ev1am"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qya6"]
 size = Vector2(20, 19)
