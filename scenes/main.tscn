@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpnn8f55l5flp"]
+[gd_scene load_steps=9 format=3 uid="uid://bpnn8f55l5flp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_77da5"]
 [ext_resource type="PackedScene" uid="uid://b77e2sp5ruhpi" path="res://actors/player.tscn" id="2_1ngoq"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_mq50u"]
 [ext_resource type="Texture2D" uid="uid://b3cmubkg8vno8" path="res://assets/ie.png" id="5_v381v"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="6_0uth1"]
+[ext_resource type="PackedScene" uid="uid://8qwbwwc4ani" path="res://scenes/game_over.tscn" id="8_yp7ln"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_77da5")
@@ -92,3 +93,8 @@ scale = Vector2(0.731204, 0.278042)
 position = Vector2(80, 72)
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+
+[node name="gameOverLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOver" parent="gameOverLayer" instance=ExtResource("8_yp7ln")]
+visible = false

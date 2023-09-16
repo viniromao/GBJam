@@ -27,7 +27,7 @@ offset_top = 68.0
 offset_right = 132.0
 offset_bottom = 78.0
 theme_override_fonts/font = ExtResource("2_ghfv8")
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 8
 text = "Press to Start"
 
 [node name="Button" type="Button" parent="."]

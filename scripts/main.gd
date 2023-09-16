@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var spawn_player_pos = $PlayerSpawnPos
 @onready var laser_container = $LaserContainer
-@onready var gos = $UILayer/GameOver
+@onready var gos = $gameOverLayer/GameOver
 
 func pad_with_zeros(number, width):
 	var str_num = str(number)
