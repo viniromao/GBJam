@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpbiseieir8f4"]
+[gd_scene load_steps=17 format=3 uid="uid://bpbiseieir8f4"]
 
 [ext_resource type="Script" path="res://scripts/firstCutScene.gd" id="1_j4m1s"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_7ml8b"]
@@ -12,6 +12,44 @@
 [ext_resource type="Texture2D" uid="uid://c5br2tvv7h50p" path="res://assets/button.png" id="10_loyjq"]
 [ext_resource type="Texture2D" uid="uid://cd0lkm8r8m3uh" path="res://assets/terminal.png" id="11_qg8mr"]
 [ext_resource type="Texture2D" uid="uid://cmmb6j0qyyic0" path="res://assets/cursor.png" id="12_b811l"]
+[ext_resource type="Texture2D" uid="uid://byj4hw7qddv7v" path="res://assets/skull.png" id="13_g4e23"]
+
+[sub_resource type="Animation" id="Animation_t757r"]
+resource_name = "skull"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_7i7jt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_blufa"]
+_data = {
+"RESET": SubResource("Animation_7i7jt"),
+"skull": SubResource("Animation_t757r")
+}
 
 [node name="firstCutScene" type="Node2D"]
 script = ExtResource("1_j4m1s")
@@ -103,21 +141,21 @@ scale = Vector2(1.2, 1)
 texture = ExtResource("8_sfofx")
 
 [node name="alert" type="Label" parent="popup"]
-offset_left = -23.3333
-offset_top = -10.0
-offset_right = 255.667
-offset_bottom = 47.0
-scale = Vector2(0.2, 0.2)
+offset_left = -25.8333
+offset_top = -13.0
+offset_right = 326.167
+offset_bottom = 44.0
+scale = Vector2(0.18, 0.25)
 theme_override_fonts/font = ExtResource("5_lvg8k")
 theme_override_font_sizes/font_size = 0
 text = "Can't open. Your 
 machine does not
-have enough SPACE
+have enough DISK SPACE
 "
 horizontal_alignment = 1
 
 [node name="Alert" type="Sprite2D" parent="popup"]
-position = Vector2(-30, -6)
+position = Vector2(-32.5, -7)
 scale = Vector2(0.833333, 1)
 texture = ExtResource("9_rfd6l")
 
@@ -146,11 +184,39 @@ offset_left = -54.0
 offset_top = -64.0
 offset_right = 490.0
 offset_bottom = 468.0
-scale = Vector2(0.2, 0.198)
+scale = Vector2(0.2, 0.25)
 theme_override_fonts/font = ExtResource("5_lvg8k")
 
-[node name="cursor" type="Sprite2D" parent="."]
-position = Vector2(143, 36)
-texture = ExtResource("12_b811l")
+[node name="errorText" type="Label" parent="terminal"]
+offset_left = -55.0
+offset_top = -51.0
+offset_right = 489.0
+offset_bottom = 409.0
+scale = Vector2(0.2, 0.25)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_lvg8k")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
 
 [node name="textTimer" type="Timer" parent="."]
+
+[node name="errorTimer" type="Timer" parent="."]
+
+[node name="Skull" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(78, 71)
+texture = ExtResource("13_g4e23")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skull"]
+libraries = {
+"": SubResource("AnimationLibrary_blufa")
+}
+
+[node name="cursor" type="Sprite2D" parent="."]
+position = Vector2(143, 22)
+texture = ExtResource("12_b811l")
+
+[node name="flickerTimer" type="Timer" parent="."]
+
+[node name="flickerTimer2" type="Timer" parent="."]
