@@ -1,28 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpnn8f55l5flp"]
+[gd_scene load_steps=8 format=3 uid="uid://bnyx7k8mxssfo"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_77da5"]
-[ext_resource type="PackedScene" uid="uid://b77e2sp5ruhpi" path="res://actors/player.tscn" id="2_1ngoq"]
+[ext_resource type="PackedScene" uid="uid://cr6aaydtv8qpm" path="res://actors/player.tscn" id="2_1ngoq"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="3_4ngj1"]
-[ext_resource type="PackedScene" uid="uid://bslgungkc5dsp" path="res://scenes/laser.tscn" id="3_rf63e"]
-[ext_resource type="Texture2D" uid="uid://rlmipaih1g7a" path="res://assets/kenney_space-shooter-redux/Backgrounds/purple.png" id="4_he6ju"]
 [ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="4_lksie"]
 [ext_resource type="Texture2D" uid="uid://b3cmubkg8vno8" path="res://assets/ie.png" id="5_v381v"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="6_0uth1"]
+[ext_resource type="PackedScene" uid="uid://6ekrbeoo1ite" path="res://scenes/enemy.tscn" id="7_llaly"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_77da5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(160, 143)
-rotation = 1.5708
-scale = Vector2(1.12634, 1.2517)
-texture = ExtResource("4_he6ju")
-
-[node name="Bg2" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
 texture = ExtResource("3_4ngj1")
 
-[node name="Bg3" type="Sprite2D" parent="."]
+[node name="task_bar" type="Sprite2D" parent="."]
 position = Vector2(80, 137)
 texture = ExtResource("4_lksie")
 
@@ -38,11 +31,11 @@ virus
 
 "
 
-[node name="Bg8" type="Sprite2D" parent="."]
+[node name="trash_icon" type="Sprite2D" parent="."]
 position = Vector2(17, 68)
 texture = ExtResource("5_v381v")
 
-[node name="Label" type="Label" parent="Bg8"]
+[node name="Label" type="Label" parent="trash_icon"]
 offset_left = -16.0
 offset_top = 8.0
 offset_right = 256.0
@@ -53,11 +46,11 @@ text = "trash
 
 "
 
-[node name="Bg7" type="Sprite2D" parent="."]
+[node name="internet_icon" type="Sprite2D" parent="."]
 position = Vector2(14, 95)
 texture = ExtResource("5_v381v")
 
-[node name="Label" type="Label" parent="Bg7"]
+[node name="Label" type="Label" parent="internet_icon"]
 offset_left = -7.0
 offset_top = 8.0
 offset_right = 265.0
@@ -68,14 +61,12 @@ text = "net
 
 "
 
-[node name="Texture" parent="." instance=ExtResource("2_1ngoq")]
+[node name="Player" parent="." instance=ExtResource("2_1ngoq")]
 position = Vector2(18, 26)
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="."]
 position = Vector2(21, 80)
 scale = Vector2(0.731204, 0.278042)
-
-[node name="Laser" parent="." instance=ExtResource("3_rf63e")]
 
 [node name="LaserContainer" type="Node2D" parent="."]
 
@@ -83,3 +74,6 @@ scale = Vector2(0.731204, 0.278042)
 position = Vector2(80, 72)
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+
+[node name="Enemy" parent="." instance=ExtResource("7_llaly")]
+position = Vector2(136, 26)
