@@ -1,19 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpnn8f55l5flp"]
+[gd_scene load_steps=8 format=3 uid="uid://bpnn8f55l5flp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_77da5"]
 [ext_resource type="PackedScene" uid="uid://b77e2sp5ruhpi" path="res://actors/player.tscn" id="2_1ngoq"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="3_4ngj1"]
 [ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="4_lksie"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_mq50u"]
-[ext_resource type="Texture2D" uid="uid://b3cmubkg8vno8" path="res://assets/ie.png" id="5_v381v"]
-[ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="6_0uth1"]
+[ext_resource type="AudioStream" uid="uid://b36ltheltxswr" path="res://assets/sfx&songs/main.mp3" id="7_l6jl2"]
 [ext_resource type="PackedScene" uid="uid://8qwbwwc4ani" path="res://scenes/game_over.tscn" id="8_yp7ln"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_77da5")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="bg1" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
+texture = ExtResource("3_4ngj1")
+
+[node name="bg2" type="Sprite2D" parent="."]
+position = Vector2(160, 72)
 texture = ExtResource("3_4ngj1")
 
 [node name="task_bar" type="Sprite2D" parent="."]
@@ -29,18 +32,6 @@ scale = Vector2(0.3, 0.297)
 theme_override_fonts/font = ExtResource("4_mq50u")
 text = "scr:  "
 
-[node name="Label" type="Label" parent="."]
-offset_left = 5.0
-offset_top = 37.0
-offset_right = 277.0
-offset_bottom = 94.0
-scale = Vector2(0.399589, 0.395951)
-theme_override_fonts/font = ExtResource("6_0uth1")
-text = "anti
-virus
-
-"
-
 [node name="lives" type="Label" parent="."]
 offset_left = 99.0
 offset_top = 133.0
@@ -50,41 +41,11 @@ scale = Vector2(0.3, 0.297)
 theme_override_fonts/font = ExtResource("4_mq50u")
 text = "<3"
 
-[node name="trash_icon" type="Sprite2D" parent="."]
-position = Vector2(17, 68)
-texture = ExtResource("5_v381v")
-
-[node name="Label" type="Label" parent="trash_icon"]
-offset_left = -16.0
-offset_top = 8.0
-offset_right = 256.0
-offset_bottom = 46.0
-scale = Vector2(0.4, 0.4)
-theme_override_fonts/font = ExtResource("6_0uth1")
-text = "trash
-
-"
-
-[node name="internet_icon" type="Sprite2D" parent="."]
-position = Vector2(14, 95)
-texture = ExtResource("5_v381v")
-
-[node name="Label" type="Label" parent="internet_icon"]
-offset_left = -7.0
-offset_top = 8.0
-offset_right = 265.0
-offset_bottom = 46.0
-scale = Vector2(0.4, 0.4)
-theme_override_fonts/font = ExtResource("6_0uth1")
-text = "net
-
-"
-
 [node name="Player" parent="." instance=ExtResource("2_1ngoq")]
-position = Vector2(18, 26)
+position = Vector2(19, 72)
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="."]
-position = Vector2(21, 80)
+position = Vector2(19, 72)
 scale = Vector2(0.731204, 0.278042)
 
 [node name="LaserContainer" type="Node2D" parent="."]
@@ -98,3 +59,7 @@ position_smoothing_enabled = true
 
 [node name="GameOver" parent="gameOverLayer" instance=ExtResource("8_yp7ln")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_l6jl2")
+autoplay = true

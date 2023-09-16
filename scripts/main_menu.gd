@@ -20,3 +20,4 @@ func _on_button_pressed():
 # Called when the Timer times out (after 0.5 seconds)
 #func _on_timer_timeout():
 	#anim.play("descending")
+	get_tree().change_scene_to_file("res://scenes/first_cut_scene.tscn")

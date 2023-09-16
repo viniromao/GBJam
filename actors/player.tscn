@@ -14,6 +14,7 @@ script = ExtResource("1_fu20l")
 
 [node name="Texture" type="Sprite2D" parent="." groups=["player"]]
 position = Vector2(0.1, 0)
+rotation = -1.5708
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_ev1am")
 
