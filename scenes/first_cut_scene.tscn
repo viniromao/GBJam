@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bpbiseieir8f4"]
+[gd_scene load_steps=18 format=3 uid="uid://bpbiseieir8f4"]
 
 [ext_resource type="Script" path="res://scripts/firstCutScene.gd" id="1_j4m1s"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_7ml8b"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cd0lkm8r8m3uh" path="res://assets/terminal.png" id="11_qg8mr"]
 [ext_resource type="Texture2D" uid="uid://cmmb6j0qyyic0" path="res://assets/cursor.png" id="12_b811l"]
 [ext_resource type="Texture2D" uid="uid://byj4hw7qddv7v" path="res://assets/skull.png" id="13_g4e23"]
+[ext_resource type="AudioStream" uid="uid://cqcw2obgmkh7h" path="res://assets/sfx&songs/intro.mp3" id="14_u4378"]
 
 [sub_resource type="Animation" id="Animation_t757r"]
 resource_name = "skull"
@@ -220,3 +221,7 @@ texture = ExtResource("12_b811l")
 [node name="flickerTimer" type="Timer" parent="."]
 
 [node name="flickerTimer2" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_u4378")
+autoplay = true
