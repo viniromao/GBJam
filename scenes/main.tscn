@@ -20,7 +20,7 @@ position = Vector2(80, 137)
 texture = ExtResource("4_lksie")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 4.99998
+offset_left = 5.0
 offset_top = 37.0
 offset_right = 277.0
 offset_bottom = 94.0

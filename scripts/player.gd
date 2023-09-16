@@ -24,7 +24,7 @@ func _physics_process(delta):
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	velocity = direction * speed
 	move_and_slide()
-	
+
 	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
 
 func shoot():
