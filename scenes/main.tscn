@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpnn8f55l5flp"]
+[gd_scene load_steps=8 format=3 uid="uid://bnyx7k8mxssfo"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_77da5"]
-[ext_resource type="PackedScene" uid="uid://b77e2sp5ruhpi" path="res://actors/player.tscn" id="2_1ngoq"]
-[ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="3_4ngj1"]
-[ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="4_lksie"]
-[ext_resource type="Texture2D" uid="uid://b3cmubkg8vno8" path="res://assets/ie.png" id="5_v381v"]
+[ext_resource type="PackedScene" uid="uid://cr6aaydtv8qpm" path="res://actors/player.tscn" id="2_1ngoq"]
+[ext_resource type="Texture2D" path="res://assets/bg2.png" id="3_4ngj1"]
+[ext_resource type="Texture2D" path="res://assets/bg3.png" id="4_lksie"]
+[ext_resource type="Texture2D" path="res://assets/ie.png" id="5_v381v"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="6_0uth1"]
-[ext_resource type="PackedScene" uid="uid://6ekrbeoo1ite" path="res://scenes/enemy.tscn" id="7_llaly"]
+[ext_resource type="PackedScene" uid="uid://cyi3pai6uxy7m" path="res://scenes/enemy.tscn" id="7_llaly"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_77da5")
