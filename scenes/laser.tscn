@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bslgungkc5dsp"]
+[gd_scene load_steps=5 format=3 uid="uid://bslgungkc5dsp"]
 
-[ext_resource type="Script" path="res://scripts/laser.gd" id="1_3whqs"]
+[ext_resource type="Script" path="res://scripts/enemy_shot.gd" id="1_impdf"]
+[ext_resource type="AudioStream" uid="uid://blvvpw3mlxihh" path="res://assets/sfx&songs/player_shot_sound.wav" id="2_6djfa"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_58ksg"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2nq0w"]
 load_path = "res://.godot/imported/laserBlue01.png-0af2a68fa89682c9a2318cee1a257770.ctex"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mk87i"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7cain"]
 radius = 1.0
 height = 10.0
 
@@ -14,20 +15,24 @@ position = Vector2(1, 10)
 rotation = 1.5708
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_3whqs")
+script = ExtResource("1_impdf")
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
 scale = Vector2(0.194444, 0.189815)
-texture = SubResource("CompressedTexture2D_58ksg")
+texture = SubResource("CompressedTexture2D_2nq0w")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_mk87i")
+shape = SubResource("CapsuleShape2D_7cain")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(0, 1)
 scale = Vector2(0.1, 0.075)
 
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6djfa")
+volume_db = -15.698
+autoplay = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

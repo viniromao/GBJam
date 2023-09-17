@@ -30,3 +30,7 @@ position_smoothing_enabled = true
 visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_5qya6")
+
+[node name="invincible" type="Timer" parent="."]
+
+[node name="flicker" type="Timer" parent="."]

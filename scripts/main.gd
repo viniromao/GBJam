@@ -22,11 +22,17 @@ var score = 0
 var lives = 3
 
 var timer = 0
-@export var spawnTime = .5
+var timer2 = 0
+var mainTimer = 0
+@export var spawnTime = .2
+@export var spawnTime2 = .4
+@export var spawnTime3 = .8
 
 var path1 = preload("res://paths/path1.tscn")
 var path2 = preload("res://paths/path2.tscn")
 var path3 = preload("res://paths/path3.tscn")
+var path4 = preload("res://paths/path4.tscn")
+var path5 = preload("res://paths/path5.tscn")
 var enemy_scene = preload("res://actors/enemy.tscn")
 
 var player = null
@@ -41,6 +47,8 @@ func _ready():
 	player.killed.connect(_on_player_killed)
 
 func _process(delta):
+	mainTimer += delta
+	
 	bg1.position.x -= scroll_speed * delta
 	bg2.position.x -= scroll_speed * delta
 
@@ -55,9 +63,7 @@ func _process(delta):
 	$score.text = "scr: " + padded_score
 	var padded_lives = pad_with_zeros(lives, 2) 
 	$lives.text = "<" + padded_lives
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
-	elif Input.is_action_just_pressed("reset"):
+	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 	spawnThings(delta)
 		
@@ -68,14 +74,26 @@ func _on_player_laser_shot(laser_scene, location):
 	
 func spawnThings(delta):
 	timer += delta
-	if (timer > spawnTime):
-#		var path1Instance = path1.instantiate()
-#		var path2Instance = path2.instantiate()
+	timer2 += delta
+	print(mainTimer)
+	if (timer > spawnTime && mainTimer < 5):
 		var path3Instance = path3.instantiate()
-#		add_child(path1Instance)
-#		add_child(path2Instance)
 		add_child(path3Instance)
 		timer = 0
+	if (timer > spawnTime2 && mainTimer < 9 && mainTimer > 5):
+		var path1Instance = path1.instantiate()
+		add_child(path1Instance)
+		timer = 0
+	if (timer > spawnTime3 && mainTimer < 15 && mainTimer > 9):
+		var path4Instance = path4.instantiate()
+		add_child(path4Instance)
+		timer = 0
+	if (timer2 > spawnTime3 && mainTimer < 16 && mainTimer > 10):
+		var path5Instance = path5.instantiate()
+		add_child(path5Instance)
+		timer2 = 0
+		
+	
 	
 
 func increase_score(value):

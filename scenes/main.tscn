@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="3_4ngj1"]
 [ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="4_lksie"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_mq50u"]
-[ext_resource type="AudioStream" uid="uid://b36ltheltxswr" path="res://assets/sfx&songs/main.mp3" id="7_l6jl2"]
+[ext_resource type="AudioStream" uid="uid://bnuacrq7cssio" path="res://assets/sfx&songs/epic_ost.mp3" id="7_n18ot"]
 [ext_resource type="PackedScene" uid="uid://8qwbwwc4ani" path="res://scenes/game_over.tscn" id="8_yp7ln"]
 
 [node name="main" type="Node2D"]
@@ -61,5 +61,5 @@ position_smoothing_enabled = true
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_l6jl2")
+stream = ExtResource("7_n18ot")
 autoplay = true
