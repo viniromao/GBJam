@@ -69,11 +69,11 @@ func _on_player_laser_shot(laser_scene, location):
 func spawnThings(delta):
 	timer += delta
 	if (timer > spawnTime):
-#		var path1Instance = path1.instantiate()
-#		var path2Instance = path2.instantiate()
+		#var path1Instance = path1.instantiate()
+		#var path2Instance = path2.instantiate()
 		var path3Instance = path3.instantiate()
-#		add_child(path1Instance)
-#		add_child(path2Instance)
+		#add_child(path1Instance)
+		#add_child(path2Instance)
 		add_child(path3Instance)
 		timer = 0
 	

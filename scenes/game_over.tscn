@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://8qwbwwc4ani"]
+[gd_scene load_steps=3 format=3 uid="uid://bx0j40dh841tf"]
 
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="1_jwrrs"]
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_l5pqx"]
