@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdptqfbi4fhad"]
+[gd_scene load_steps=5 format=3 uid="uid://d1hq6tnka0q7l"]
 
 [ext_resource type="Script" path="res://scripts/laser.gd" id="1_vmy0h"]
-[ext_resource type="Texture2D" uid="uid://c1vjk6wqtn8n8" path="res://scenes/enemy_shot.tres" id="2_jyole"]
-[ext_resource type="AudioStream" path="res://assets/sfx&songs/player_shot_sound.wav" id="2_n2aeb"]
+[ext_resource type="Texture2D" path="res://scenes/enemy_shot.tres" id="2_jyole"]
+[ext_resource type="AudioStream" uid="uid://blvvpw3mlxihh" path="res://assets/sfx&songs/player_shot_sound.wav" id="2_n2aeb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mk87i"]
 radius = 1.0

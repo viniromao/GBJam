@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bplwgrhb0fyjl"]
 
-[ext_resource type="Script" path="res://scripts/pathFollow2.gd" id="1_x0k4f"]
+[ext_resource type="Script" path="res://scripts/pathFollow2.gd" id="1_mxp6q"]
 
 [sub_resource type="Curve2D" id="Curve2D_1s5os"]
 _data = {
@@ -17,7 +17,7 @@ rotation = 2.85014
 rotates = false
 cubic_interp = false
 loop = false
-script = ExtResource("1_x0k4f")
+script = ExtResource("1_mxp6q")
 
 [node name="_Timer_128292" type="Timer" parent="PathFollow2D"]
 wait_time = 0.2

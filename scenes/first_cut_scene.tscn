@@ -14,9 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://cmmb6j0qyyic0" path="res://assets/cursor.png" id="12_b811l"]
 [ext_resource type="Texture2D" uid="uid://byj4hw7qddv7v" path="res://assets/skull.png" id="13_g4e23"]
 [ext_resource type="AudioStream" uid="uid://cqcw2obgmkh7h" path="res://assets/sfx&songs/intro.mp3" id="14_u4378"]
-[ext_resource type="AudioStream" path="res://assets/sfx&songs/mouse_click.wav" id="15_f5yhx"]
-[ext_resource type="AudioStream" path="res://assets/sfx&songs/error_mesage_pop_up_sound.wav" id="16_vmrjm"]
-[ext_resource type="AudioStream" path="res://assets/sfx&songs/text_display_sound.wav" id="17_usb37"]
+[ext_resource type="AudioStream" uid="uid://g5gt0gqtdopg" path="res://assets/sfx&songs/mouse_click.wav" id="15_f5yhx"]
+[ext_resource type="AudioStream" uid="uid://o8b38goq2vic" path="res://assets/sfx&songs/error_mesage_pop_up_sound.wav" id="16_vmrjm"]
+[ext_resource type="AudioStream" uid="uid://brny704taxqa0" path="res://assets/sfx&songs/text_display_sound.wav" id="17_usb37"]
 
 [sub_resource type="Animation" id="Animation_7i7jt"]
 length = 0.001
