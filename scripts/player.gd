@@ -43,6 +43,8 @@ func take_damage():
 	if invincible: 
 		return
 	lives -= 1
+	var script = get_tree().current_scene
+	script.decrease_lives()
 	if (lives <= 0):
 		die()
 	else:

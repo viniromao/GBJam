@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://nse746sv02cb"]
+[gd_scene load_steps=8 format=3 uid="uid://di8tt1ebnn0v7"]
 
 [ext_resource type="Script" path="res://scripts/Level2.gd" id="1_kduxb"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_50o0m"]
 [ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="3_kurii"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_gwfnx"]
 [ext_resource type="PackedScene" uid="uid://b77e2sp5ruhpi" path="res://actors/player.tscn" id="5_vyclb"]
-[ext_resource type="PackedScene" uid="uid://bx0j40dh841tf" path="res://scenes/game_over.tscn" id="6_fyxt0"]
+[ext_resource type="PackedScene" uid="uid://8qwbwwc4ani" path="res://scenes/game_over.tscn" id="6_fyxt0"]
 [ext_resource type="AudioStream" uid="uid://b36ltheltxswr" path="res://assets/sfx&songs/main.mp3" id="7_5brd0"]
 
 [node name="Level2" type="Node2D"]

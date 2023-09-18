@@ -15,15 +15,15 @@ func _on_area_entered(area):
 		area.die()
 		queue_free()
 		
-#		if area.name == "MainArea":
-#			emit_signal("score_increased", 20)	
-#		elif area.name == "Level2Area":
-#			emit_signal("score_increased", 20)
-
-		var main_script = get_tree().get_root().get_node("Main")  # Assuming the main node's name is "Main"
-		main_script.increase_score(20)
-
+	if area is Enemy:
+		area.die()
 		queue_free()
+		
+	var root_script = get_tree().current_scene
+	if root_script:
+		root_script.increase_score(20)
+
+	queue_free()
 
 func _on_visible_on_screen_enabler_2d_screen_exited():
 	# Remove the shot if it goes off-screen

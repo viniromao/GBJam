@@ -1,8 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1hq6tnka0q7l"]
 
 [ext_resource type="Script" path="res://scripts/laser.gd" id="1_vmy0h"]
-[ext_resource type="Texture2D" path="res://scenes/enemy_shot.tres" id="2_jyole"]
 [ext_resource type="AudioStream" uid="uid://blvvpw3mlxihh" path="res://assets/sfx&songs/player_shot_sound.wav" id="2_n2aeb"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_58ksg"]
+load_path = "res://.godot/imported/laserBlue01.png-0af2a68fa89682c9a2318cee1a257770.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mk87i"]
 radius = 1.0
@@ -18,7 +20,7 @@ script = ExtResource("1_vmy0h")
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
 scale = Vector2(0.194444, 0.189815)
-texture = ExtResource("2_jyole")
+texture = SubResource("CompressedTexture2D_58ksg")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)

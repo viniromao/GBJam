@@ -75,7 +75,6 @@ func _on_player_laser_shot(laser_scene, location):
 func spawnThings(delta):
 	timer += delta
 	timer2 += delta
-	print(mainTimer)
 	if (timer > spawnTime && mainTimer < 5):
 		var path3Instance = path3.instantiate()
 		add_child(path3Instance)
@@ -97,6 +96,7 @@ func spawnThings(delta):
 	
 
 func increase_score(value):
+	print("chamou")
 	score += value
 	
 func decrease_lives():
