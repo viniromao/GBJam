@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://kokif0x1tf23"]
+[gd_scene load_steps=9 format=3 uid="uid://kokif0x1tf23"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_34ijr"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="1_u62l8"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="2_ghfv8"]
+[ext_resource type="Script" path="res://scripts/anim.gd" id="3_hcv46"]
 
 [sub_resource type="Animation" id="Animation_tksnl"]
 length = 0.001
@@ -80,6 +81,37 @@ autoplay = "blinking"
 libraries = {
 "": SubResource("AnimationLibrary_5rasv")
 }
+script = ExtResource("3_hcv46")
+
+[node name="Title4" type="Label" parent="anim"]
+self_modulate = Color(1, 1, 1, 0.176471)
+offset_left = 41.0
+offset_top = 7.0
+offset_right = 121.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("1_u62l8")
+theme_override_font_sizes/font_size = 16
+text = "GBJam"
+
+[node name="Title3" type="Label" parent="anim"]
+modulate = Color(1, 1, 1, 0.490196)
+offset_left = 41.0
+offset_top = 7.0
+offset_right = 121.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("1_u62l8")
+theme_override_font_sizes/font_size = 16
+text = "GBJam"
+
+[node name="Title2" type="Label" parent="anim"]
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = 41.0
+offset_top = 7.0
+offset_right = 121.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("1_u62l8")
+theme_override_font_sizes/font_size = 16
+text = "GBJam"
 
 [node name="Title" type="Label" parent="anim"]
 offset_left = 41.0
