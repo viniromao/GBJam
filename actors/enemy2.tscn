@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ffl8m68kiwq1"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_wx6nr"]
+[ext_resource type="Texture2D" uid="uid://c6hx087n47mka" path="res://assets/Texto do seu parágrafo (40 × 40 px).png" id="2_rryqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6qh5"]
+size = Vector2(16, 16)
+
+[node name="Enemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_wx6nr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_rryqw")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m6qh5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(15, 0)
+scale = Vector2(0.25, 0.25)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -15,6 +15,10 @@ var current_line = 0
 var current_line2 = 0
 var animation_ended = false
 var terminalIsVisible = false
+var clickPlayed = false
+var clickPlayed2 = false
+var clickPlayed3 = false
+var errorPlayed = false
 
 func _ready():
 	$popup.visible = false  
@@ -40,6 +44,9 @@ func _process(delta):
 		$cursor.position = $cursor.position.lerp(cursorPosition3, speed)
 		
 		if $cursor.position.distance_to(cursorPosition3) < 1.0:
+			if !clickPlayed3:
+				clickPlayed3 = true
+				$click.play()
 			var timer = get_tree().create_timer(.5)
 			await timer.timeout
 			isMovingToPosition3 = false
@@ -54,19 +61,29 @@ func _process(delta):
 		$cursor.position = $cursor.position.lerp(cursorPosition1, speed)
 		
 		if $cursor.position.distance_to(cursorPosition1) < 1.0:
+			if !clickPlayed:
+				clickPlayed = true
+				$click.play()
 			var timer = get_tree().create_timer(.5)
 			await timer.timeout
 			
 			$popup.visible = true
+			if !errorPlayed:
+				errorPlayed =true
+				$error.play()
 			
 			var timer2 = get_tree().create_timer(1.0)
 			await timer2.timeout
 			
 			isMovingToPosition2 = true
+			clickPlayed = false
 	else:
 		$cursor.position = $cursor.position.lerp(cursorPosition2, speed)
 
 		if $cursor.position.distance_to(cursorPosition2) < 1.0:
+			if !clickPlayed2:
+				clickPlayed2 = true
+				$click.play()
 			var timer = get_tree().create_timer(3)
 			await timer.timeout
 			if !terminalIsVisible && !animation_ended:
@@ -78,10 +95,12 @@ func _process(delta):
 				
 func _on_textTimer_timeout():
 	if current_line < text_lines.size():
+		$terminal_sound.play()
 		get_node("terminal/terminalText").text += text_lines[current_line]
 		current_line += 1
 	else:
 		$textTimer.stop()
+		$terminal_sound.stop()
 		get_node("terminal/terminalText").text = ""
 		$errorTimer.start()
 		

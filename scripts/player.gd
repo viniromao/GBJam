@@ -6,12 +6,20 @@ signal killed
 @export var speed = 100
 @export var rate_of_fire := 0.25
 @export var lives := 3
+@export var invincible = false
 
 @onready var muzzle = $Muzzle
 
 var laser_scene = preload("res://scenes/laser.tscn")
 
 var shoot_cd := false
+
+func _on_flicker_timeout():
+	$Texture.visible = not $Texture.visible
+	
+func _ready():
+	var flicker = get_node("flicker")	
+	flicker.timeout.connect(_on_flicker_timeout)
 
 func _process(delta):
 	if Input.is_action_pressed("shoot"):
@@ -32,9 +40,28 @@ func shoot():
 	laser_shot.emit(laser_scene, muzzle.global_position)
 
 func take_damage():
+	if invincible: 
+		return
 	lives -= 1
 	if (lives <= 0):
 		die()
+	else:
+		set_invincible()
+		
+func set_invincible():
+	if invincible:
+		return
+	
+	invincible = true
+#	$invincible.start()
+	$flicker.start(.05)
+	
+	var timer = get_tree().create_timer(3)
+	await timer.timeout
+	invincible = false
+	$flicker.stop()
+	$Texture.visible = true
+	
 
 func die():
 	killed.emit()

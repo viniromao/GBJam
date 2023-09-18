@@ -21,22 +21,21 @@ color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 14.75
-offset_top = 30.25
-offset_right = 166.75
-offset_bottom = 53.25
+offset_left = 15.0
+offset_top = 24.0
+offset_right = 167.0
+offset_bottom = 47.0
 theme_override_fonts/font = ExtResource("1_jwrrs")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 15
 text = "Game over
 "
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 75.75
-offset_right = 135.0
-offset_bottom = 103.75
-scale = Vector2(0.7, 0.7)
+offset_left = 36.0
+offset_top = 71.0
+offset_right = 124.0
+offset_bottom = 99.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_jwrrs")
 text = "Retry

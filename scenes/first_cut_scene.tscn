@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bpbiseieir8f4"]
+[gd_scene load_steps=21 format=3 uid="uid://bpbiseieir8f4"]
 
 [ext_resource type="Script" path="res://scripts/firstCutScene.gd" id="1_j4m1s"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_7ml8b"]
@@ -14,6 +14,24 @@
 [ext_resource type="Texture2D" uid="uid://cmmb6j0qyyic0" path="res://assets/cursor.png" id="12_b811l"]
 [ext_resource type="Texture2D" uid="uid://byj4hw7qddv7v" path="res://assets/skull.png" id="13_g4e23"]
 [ext_resource type="AudioStream" uid="uid://cqcw2obgmkh7h" path="res://assets/sfx&songs/intro.mp3" id="14_u4378"]
+[ext_resource type="AudioStream" uid="uid://g5gt0gqtdopg" path="res://assets/sfx&songs/mouse_click.wav" id="15_f5yhx"]
+[ext_resource type="AudioStream" uid="uid://o8b38goq2vic" path="res://assets/sfx&songs/error_mesage_pop_up_sound.wav" id="16_vmrjm"]
+[ext_resource type="AudioStream" uid="uid://brny704taxqa0" path="res://assets/sfx&songs/text_display_sound.wav" id="17_usb37"]
+
+[sub_resource type="Animation" id="Animation_7i7jt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_t757r"]
 resource_name = "skull"
@@ -29,21 +47,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_7i7jt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_blufa"]
@@ -225,3 +228,12 @@ texture = ExtResource("12_b811l")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_u4378")
 autoplay = true
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_f5yhx")
+
+[node name="error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_vmrjm")
+
+[node name="terminal_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_usb37")
