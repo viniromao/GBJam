@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bslgungkc5dsp"]
 
 [ext_resource type="Script" path="res://scripts/enemy_shot.gd" id="1_impdf"]
-[ext_resource type="AudioStream" uid="uid://blvvpw3mlxihh" path="res://assets/sfx&songs/player_shot_sound.wav" id="2_6djfa"]
+[ext_resource type="AudioStream" path="res://assets/sfx&songs/player_shot_sound.wav" id="2_6djfa"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2nq0w"]
 load_path = "res://.godot/imported/laserBlue01.png-0af2a68fa89682c9a2318cee1a257770.ctex"
