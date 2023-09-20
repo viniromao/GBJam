@@ -1,12 +1,10 @@
+/*
+	Glitch Effect Shader by Yui Kinomoto @arlez80
+*/
+
 shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-
-/*
-	Glitch Effect Shader by Yui Kinomoto @arlez80
-
-	MIT License
-*/
 
 // 振動の強さ
 uniform float shake_power = 0.03;
@@ -39,15 +37,15 @@ void fragment( )
 		) - 0.5
 	) * shake_power * enable_shift;
 
-	vec4 pixel_color = textureLod( SCREEN_TEXTURE, fixed_uv, 0.0 );
+	vec4 pixel_color = texture( SCREEN_TEXTURE, fixed_uv );
 	pixel_color.r = mix(
 		pixel_color.r
-	,	textureLod( SCREEN_TEXTURE, fixed_uv + vec2( shake_color_rate, 0.0 ), 0.0 ).r
+	,	texture( SCREEN_TEXTURE, fixed_uv + vec2( shake_color_rate, 0.0 ) ).r
 	,	enable_shift
 	);
 	pixel_color.b = mix(
 		pixel_color.b
-	,	textureLod( SCREEN_TEXTURE, fixed_uv + vec2( -shake_color_rate, 0.0 ), 0.0 ).b
+	,	texture( SCREEN_TEXTURE, fixed_uv + vec2( -shake_color_rate, 0.0 ) ).b
 	,	enable_shift
 	);
 	COLOR = pixel_color;

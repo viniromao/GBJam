@@ -1,24 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://mf0f8w7mkr5l"]
+[gd_scene load_steps=3 format=3 uid="uid://bkihb13bqgj8f"]
 
-[ext_resource type="Script" path="res://scripts/pathFollow2.gd" id="1_rpje7"]
+[ext_resource type="Script" path="res://scripts/pathFollow.gd" id="1_mqucg"]
 
 [sub_resource type="Curve2D" id="Curve2D_1s5os"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 174, 117, 0, 0, 0, 0, 11, 121, 0, 0, 0, 0, 198, 117)
+"points": PackedVector2Array(0, 0, 0, 0, 238, 23, 0, 0, 0, 0, 229, 27, 0, 0, 0, 0, 223, 29, 0, 0, 0, 0, 215, 28, 0, 0, 0, 0, 205, 22, 0, 0, 0, 0, 193, 11, 0, 0, 0, 0, 177.976, 11, 0, 0, 0, 0, 170, 23, 0, 0, 0, 0, 162.606, 25, 0, 0, 0, 0, 155.325, 17, 0, 0, 0, 0, 144, 12, 0, 0, 0, 0, 139, 21, 0, 0, 0, 0, 131, 27, 0, 0, 0, 0, 123.929, 19, 0, 0, 0, 0, 120.556, 15.6534, 0, 0, 0, 0, 114.876, 11, 0, 0, 0, 0, 110.603, 14.066, 0, 0, 0, 0, 107, 19, 0, 0, 0, 0, 100, 26, 0, 0, 0, 0, 94, 17, 0, 0, 0, 0, 88, 11, 0, 0, 0, 0, 81, 15, 0, 0, 0, 0, 77, 20, 0, 0, 0, 0, 68, 23, 0, 0, 0, 0, 59, 18, 0, 0, 0, 0, 51, 13, 0, 0, 0, 0, 46.112, 15, 0, 0, 0, 0, 43.6851, 24, 0, 0, 0, 0, 42.8761, 131, 0, 0, 0, 0, 52.5839, 132, 0, 0, 0, 0, 59, 122, 0, 0, 0, 0, 69, 120, 0, 0, 0, 0, 73, 126, 0, 0, 0, 0, 77.6624, 133, 0, 0, 0, 0, 85, 121, 0, 0, 0, 0, 94, 123, 0, 0, 0, 0, 100, 132, 0, 0, 0, 0, 107, 123, 0, 0, 0, 0, 115, 122, 0, 0, 0, 0, 119.729, 129, 0, 0, 0, 0, 129.437, 133, 0, 0, 0, 0, 133, 124, 0, 0, 0, 0, 141.572, 122, 0, 0, 0, 0, 146.426, 132, 0, 0, 0, 0, 152.898, 126, 0, 0, 0, 0, 153.707, 120, 0, 0, 0, 0, 160.988, 123, 0, 0, 0, 0, 167, 132, 0, 0, 0, 0, 175, 122, 0, 0, 0, 0, 183.639, 121, 0, 0, 0, 0, 194, 133, 0, 0, 0, 0, 206, 129, 0, 0, 0, 0, 213, 122, 0, 0, 0, 0, 220, 122, 0, 0, 0, 0, 228, 128, 0, 0, 0, 0, 235, 134)
 }
-point_count = 3
+point_count = 56
 
 [node name="Path2D" type="Path2D"]
+position = Vector2(-58, -6)
 curve = SubResource("Curve2D_1s5os")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(174, 117)
+position = Vector2(238, 23)
 rotation = 2.85014
 rotates = false
 cubic_interp = false
 loop = false
-script = ExtResource("1_rpje7")
+script = ExtResource("1_mqucg")
+runSpeed = 0.1
 
 [node name="_Timer_128292" type="Timer" parent="PathFollow2D"]
 wait_time = 0.2
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(138, 77)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true

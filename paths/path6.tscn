@@ -24,3 +24,8 @@ script = ExtResource("1_to45a")
 [node name="_Timer_128292" type="Timer" parent="PathFollow2D"]
 wait_time = 0.2
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(76.0237, 71)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true

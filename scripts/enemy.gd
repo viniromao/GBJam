@@ -1,7 +1,13 @@
 class_name Enemy extends Area2D
 
 func die():
+	var animation_player = $anim
+
+	animation_player.play("damage")
+	await animation_player.animation_finished
+	
 	queue_free()
+
 
 func _ready():
 	pass # 
@@ -17,6 +23,3 @@ func _on_body_entered(body):
 		body.take_damage()
 		die()
 
-
-func _on_area_entered(area):
-	pass

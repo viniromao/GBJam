@@ -1,10 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://ffl8m68kiwq1"]
+[gd_scene load_steps=9 format=3 uid="uid://dka8ei22x6lau"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_wx6nr"]
 [ext_resource type="Texture2D" uid="uid://c6hx087n47mka" path="res://assets/Texto do seu parágrafo (40 × 40 px).png" id="2_rryqw"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_urdjd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_syavd"]
+shader = ExtResource("2_urdjd")
+shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6qh5"]
 size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_tytmp"]
+resource_name = "glitch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jjcvw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d5dqn"]
+_data = {
+"RESET": SubResource("Animation_jjcvw"),
+"glitch": SubResource("Animation_tytmp")
+}
 
 [node name="Enemy" type="Area2D"]
 collision_layer = 2
@@ -12,6 +54,7 @@ collision_mask = 5
 script = ExtResource("1_wx6nr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_syavd")
 rotation = 3.14159
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_rryqw")
@@ -23,5 +66,11 @@ shape = SubResource("RectangleShape2D_m6qh5")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(15, 0)
 scale = Vector2(0.25, 0.25)
+
+[node name="anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_d5dqn")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

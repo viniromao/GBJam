@@ -4,9 +4,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_1s5os"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 174.959, 7, 0, 0, 0, 0, 16.6627, 7, 0, 0, 0, 0, 16.6627, 111, 0, 0, 0, 0, 204.118, 110)
+"points": PackedVector2Array(0, 0, 0, 0, 174.959, 7, 0, 0, 0, 0, 88.5207, 7, 0, 0, 0, 0, 4.16568, 7, 0, 0, 0, 0, 4.16568, 28, 0, 0, 0, 0, 4.16568, 92, 0, 0, 0, 0, 4.16568, 121, 0, 0, 0, 0, 48.9468, 121, 0, 0, 0, 0, 130.178, 122, 0, 0, 0, 0, 210.367, 123)
 }
-point_count = 4
+point_count = 9
 
 [node name="Path2D" type="Path2D"]
 position = Vector2(7, 0)
@@ -24,3 +24,9 @@ script = ExtResource("1_46p3h")
 [node name="_Timer_128292" type="Timer" parent="PathFollow2D"]
 wait_time = 0.2
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-7.28995, 0)
+anchor_mode = 0
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true

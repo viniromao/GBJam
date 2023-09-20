@@ -8,9 +8,6 @@ extends Node2D
 @export var scroll_speed = 20.0
 
 @onready var bg1 = $bg1
-@onready var bg2 = $bg2
-
-var bg_width
 
 func pad_with_zeros(number, width):
 	var str_num = str(number)
@@ -21,19 +18,33 @@ func pad_with_zeros(number, width):
 var score = 0
 var lives = 3
 
-var timer = 0
-@export var spawnTime = .5
+var spawnTimer = 0
+var spawnTimer2 = 0
+var mainTimer = 0
+@export var spawnTime = .2
+@export var spawnTime2 = .4
+@export var spawnTime3 = .8
 
-var path1 = preload("res://paths/path1.tscn")
-var path2 = preload("res://paths/path2.tscn")
-var path3 = preload("res://paths/path3.tscn")
+var pathMapping = {
+	1: preload("res://paths/path1.tscn"),  # First timer calls path5
+	2: preload("res://paths/path2.tscn"),  # Second timer calls path3
+	3: preload("res://paths/path3.tscn"),  # Third timer calls path1
+	4: preload("res://paths/path4.tscn"),  # Fourth timer calls path2
+	5: preload("res://paths/path5.tscn"), # Fourth timer also calls path10
+	6: preload("res://paths/path6.tscn"),  # Fourth timer also calls path11
+	7: preload("res://paths/path7.tscn"),  # Fourth timer also calls path11
+	8: preload("res://paths/path8.tscn"),  # Fourth timer also calls path11
+	9: preload("res://paths/path9.tscn"),  # Fourth timer also calls path11
+	10: preload("res://paths/path10.tscn"), # Fourth timer also calls path11
+	11: preload("res://paths/path11.tscn"), # Fourth timer also calls path11
+}
 var enemy_scene = preload("res://actors/enemy.tscn")
 
 var player = null
 
 func _ready():
-	bg_width = bg1.texture.get_width()
-	bg2.position.x = bg_width + 80
+
+
 	player = get_tree().get_first_node_in_group("player")
 	assert(player != null)
 	player.global_position = spawn_player_pos.global_position
@@ -41,23 +52,13 @@ func _ready():
 	player.killed.connect(_on_player_killed)
 
 func _process(delta):
-	bg1.position.x -= scroll_speed * delta
-	bg2.position.x -= scroll_speed * delta
-
-	if bg1.position.x <= -bg_width + 80:
-		bg1.position.x = bg2.position.x + bg_width
-
-	if bg2.position.x <= -bg_width + 80:
-		bg2.position.x = bg1.position.x + bg_width
-	
+	mainTimer += delta
 	
 	var padded_score = pad_with_zeros(score, 8) 
 	$score.text = "scr: " + padded_score
 	var padded_lives = pad_with_zeros(lives, 2) 
 	$lives.text = "<" + padded_lives
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
-	elif Input.is_action_just_pressed("reset"):
+	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 	spawnThings(delta)
 		
@@ -67,23 +68,53 @@ func _on_player_laser_shot(laser_scene, location):
 	laser_container.add_child(laser)
 	
 func spawnThings(delta):
-	timer += delta
-	if (timer > spawnTime):
-		#var path1Instance = path1.instantiate()
-		#var path2Instance = path2.instantiate()
-		var path3Instance = path3.instantiate()
-		#add_child(path1Instance)
-		#add_child(path2Instance)
-		add_child(path3Instance)
-		timer = 0
+	spawnTimer += delta
+	spawnTimer2 += delta
 	
+	if spawnTimer > spawnTime3 && mainTimer < 10:
+		spawnPath(1)  
+		spawnTimer = .1
+	
+	if spawnTimer > spawnTime3 && mainTimer >= 10 && mainTimer < 25:
+		spawnPath(5)  
+		spawnTimer = 0
+		spawnTimer2 = 0
+	
+	if spawnTimer2 > spawnTime3 && mainTimer >= 25 && mainTimer < 30:
+		spawnPath(3)  
+		spawnTimer2 = 0
+
+	if spawnTimer2 > spawnTime3 && mainTimer >= 30 && mainTimer < 40:
+		spawnPath(6)  
+		spawnTimer = 0
+		spawnTimer2 = 0
+
+	if spawnTimer2 > spawnTime3 && mainTimer >= 40 && mainTimer < 50:
+		spawnPath(11) 
+		spawnTimer = 0
+		spawnTimer2 = 0 
+		
+	if spawnTimer2 > spawnTime3 && mainTimer >= 50 && mainTimer < 60:
+		spawnPath(10) 
+		spawnPath(2) 
+		spawnTimer = 0
+		spawnTimer2 = 0 
+
+
+func spawnPath(index):
+	var pathInstance = pathMapping[index].instantiate()
+	add_child(pathInstance)
 
 func increase_score(value):
+	print("chamou")
 	score += value
 	
 func decrease_lives():
 	lives -= 1
 
 func _on_player_killed():
+	var animation_player = $anim
+	animation_player.play("blur")
+	await animation_player.animation_finished
 	await get_tree().create_timer(0.5).timeout
 	gos.visible = true

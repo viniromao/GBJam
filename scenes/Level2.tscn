@@ -1,22 +1,106 @@
-[gd_scene load_steps=8 format=3 uid="uid://di8tt1ebnn0v7"]
+[gd_scene load_steps=15 format=3 uid="uid://nse746sv02cb"]
 
 [ext_resource type="Script" path="res://scripts/Level2.gd" id="1_kduxb"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_50o0m"]
 [ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="3_kurii"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_gwfnx"]
 [ext_resource type="PackedScene" uid="uid://b77e2sp5ruhpi" path="res://actors/player.tscn" id="5_vyclb"]
-[ext_resource type="PackedScene" uid="uid://8qwbwwc4ani" path="res://scenes/game_over.tscn" id="6_fyxt0"]
+[ext_resource type="PackedScene" uid="uid://bx0j40dh841tf" path="res://scenes/game_over.tscn" id="6_fyxt0"]
 [ext_resource type="AudioStream" uid="uid://b36ltheltxswr" path="res://assets/sfx&songs/main.mp3" id="7_5brd0"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="8_n5g7c"]
+[ext_resource type="Shader" path="res://scenes/VHS.gdshader" id="9_qiu34"]
+
+[sub_resource type="Animation" id="Animation_4mcyw"]
+resource_name = "blur"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_yf1t4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rlfvs"]
+_data = {
+"RESET": SubResource("Animation_yf1t4"),
+"blur": SubResource("Animation_4mcyw")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fd20u"]
+shader = ExtResource("8_n5g7c")
+shader_parameter/amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ffjhn"]
+shader = ExtResource("9_qiu34")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.836
+shader_parameter/scanlines_width = 0.379
+shader_parameter/grille_opacity = 0.091
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 4.0
+shader_parameter/roll_size = 13.55
+shader_parameter/roll_variation = 0.9
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.056
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.15
+shader_parameter/aberration = 4.75e-08
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = true
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.337
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_kduxb")
 
 [node name="bg1" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
-texture = ExtResource("2_50o0m")
-
-[node name="bg2" type="Sprite2D" parent="."]
-position = Vector2(160, 72)
 texture = ExtResource("2_50o0m")
 
 [node name="task_bar" type="Sprite2D" parent="."]
@@ -62,4 +146,23 @@ visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_5brd0")
+volume_db = -19.14
 autoplay = true
+
+[node name="anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Blur")
+libraries = {
+"": SubResource("AnimationLibrary_rlfvs")
+}
+
+[node name="Blur" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_fd20u")
+offset_right = 241.0
+offset_bottom = 144.0
+
+[node name="VHSEffect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ffjhn")
+offset_right = 241.0
+offset_bottom = 144.0
