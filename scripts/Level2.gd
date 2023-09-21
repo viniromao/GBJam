@@ -2,28 +2,19 @@ extends Node2D
 
 @onready var spawn_player_pos = $PlayerSpawnPos
 @onready var laser_container = $LaserContainer
-@onready var gos = $gameOverLayer/GameOver
 
 @export var player_initial_position = Vector2(0,0)
 @export var scroll_speed = 20.0
 
-@onready var bg1 = $bg1
-
-func pad_with_zeros(number, width):
-	var str_num = str(number)
-	while str_num.length() < width:
-		str_num = "0" + str_num
-	return str_num
-
-var score = 0
-var lives = 3
-
-var spawnTimer = 0
-var spawnTimer2 = 0
-var mainTimer = 0
 @export var spawnTime = .2
 @export var spawnTime2 = .4
 @export var spawnTime3 = .8
+var spawnTimer = 0
+var spawnTimer2 = 0
+var mainTimer = 0
+
+var score = 0
+var lives = 3
 
 var pathMapping = {
 	1: preload("res://paths/path1.tscn"),  # First timer calls path5
@@ -37,14 +28,20 @@ var pathMapping = {
 	9: preload("res://paths/path9.tscn"),  # Fourth timer also calls path11
 	10: preload("res://paths/path10.tscn"), # Fourth timer also calls path11
 	11: preload("res://paths/path11.tscn"), # Fourth timer also calls path11
+	12: preload("res://paths/path12.tscn"), # Fourth timer also calls path11
+	13: preload("res://paths/path13.tscn"), # Fourth timer also calls path11
 }
 var enemy_scene = preload("res://actors/enemy.tscn")
 
 var player = null
 
+func pad_with_zeros(number, width):
+	var str_num = str(number)
+	while str_num.length() < width:
+		str_num = "0" + str_num
+	return str_num
+
 func _ready():
-
-
 	player = get_tree().get_first_node_in_group("player")
 	assert(player != null)
 	player.global_position = spawn_player_pos.global_position
@@ -71,16 +68,17 @@ func spawnThings(delta):
 	spawnTimer += delta
 	spawnTimer2 += delta
 	
-	if spawnTimer > spawnTime3 && mainTimer < 10:
+	if spawnTimer > spawnTime3 && mainTimer < 6:
 		spawnPath(1)  
 		spawnTimer = .1
 	
-	if spawnTimer > spawnTime3 && mainTimer >= 10 && mainTimer < 25:
-		spawnPath(5)  
+	if spawnTimer > spawnTime3 && mainTimer >= 5 && mainTimer < 20:
+		spawnPath(5) 
+		spawnPath(7)
 		spawnTimer = 0
 		spawnTimer2 = 0
 	
-	if spawnTimer2 > spawnTime3 && mainTimer >= 25 && mainTimer < 30:
+	if spawnTimer2 > spawnTime3 && mainTimer >= 20 && mainTimer < 30:
 		spawnPath(3)  
 		spawnTimer2 = 0
 
@@ -91,6 +89,13 @@ func spawnThings(delta):
 
 	if spawnTimer2 > spawnTime3 && mainTimer >= 40 && mainTimer < 50:
 		spawnPath(11) 
+		spawnPath(12)
+		spawnTimer = 0
+		spawnTimer2 = 0 
+		
+	if spawnTimer2 > spawnTime3 && mainTimer >= 46 && mainTimer < 50:
+		spawnPath(13)
+		spawnPath(8)
 		spawnTimer = 0
 		spawnTimer2 = 0 
 		
@@ -99,22 +104,23 @@ func spawnThings(delta):
 		spawnPath(2) 
 		spawnTimer = 0
 		spawnTimer2 = 0 
-
+		
+	
+	if spawnTimer > spawnTime3 && mainTimer < 60:
+		get_tree().change_scene_to_file("res://scenes/firstCutScene.tscn")
 
 func spawnPath(index):
 	var pathInstance = pathMapping[index].instantiate()
 	add_child(pathInstance)
 
 func increase_score(value):
-	print("chamou")
 	score += value
 	
 func decrease_lives():
 	lives -= 1
 
 func _on_player_killed():
-	var animation_player = $anim
-	animation_player.play("blur")
-	await animation_player.animation_finished
-	await get_tree().create_timer(0.5).timeout
-	gos.visible = true
+	pass
+#	await get_tree().create_timer(0.5).timeout
+#	get_tree().change_scene_to_file("res://scenes/continue.tscn")
+	

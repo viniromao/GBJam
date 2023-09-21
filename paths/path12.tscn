@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c066ys66n7pad"]
+
+[ext_resource type="Script" path="res://scripts/pathFollow.gd" id="1_oa8x6"]
+
+[sub_resource type="Curve2D" id="Curve2D_1s5os"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 182, -18, 0, 0, 0, 0, -22, 160)
+}
+point_count = 2
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_1s5os")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(182, -18)
+rotation = 2.85014
+rotates = false
+cubic_interp = false
+loop = false
+script = ExtResource("1_oa8x6")
+
+[node name="_Timer_128292" type="Timer" parent="PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 72)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true

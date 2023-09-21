@@ -45,7 +45,6 @@ func take_damage():
 	lives -= 1
 	var script = get_tree().current_scene
 	script.decrease_lives()
-	$anim.play("damage")
 	if (lives <= 0):
 		die()
 	else:

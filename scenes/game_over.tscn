@@ -1,7 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://bx0j40dh841tf"]
+[gd_scene load_steps=6 format=3 uid="uid://bx0j40dh841tf"]
 
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="1_jwrrs"]
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_l5pqx"]
+
+[sub_resource type="Animation" id="Animation_rsnft"]
+resource_name = "blinking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim/Label:theme_override_colors/font_color")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.94902), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xeun8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x4r8x"]
+_data = {
+"RESET": SubResource("Animation_xeun8"),
+"blinking": SubResource("Animation_rsnft")
+}
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -23,22 +60,25 @@ color = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 15.0
 offset_top = 24.0
-offset_right = 167.0
+offset_right = 160.0
 offset_bottom = 47.0
 theme_override_fonts/font = ExtResource("1_jwrrs")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 16
 text = "Game over
 "
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 71.0
-offset_right = 124.0
-offset_bottom = 99.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_jwrrs")
-text = "Retry
-"
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "blinking"
+libraries = {
+"": SubResource("AnimationLibrary_x4r8x")
+}
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Label" type="Label" parent="anim"]
+offset_left = 177.0
+offset_top = 310.0
+offset_right = 481.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_fonts/font = ExtResource("1_jwrrs")
+theme_override_font_sizes/font_size = 32
+text = "push enter"

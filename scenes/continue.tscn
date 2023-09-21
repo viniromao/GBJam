@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://uy28itorthtr"]
+
+[ext_resource type="Script" path="res://scripts/continue.gd" id="1_aadkb"]
+[ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="2_fopro"]
+
+[sub_resource type="Animation" id="Animation_gx5wg"]
+resource_name = "descending"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("continue:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10, -20), Vector2(10, 35)]
+}
+
+[sub_resource type="Animation" id="Animation_fllhc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("continue:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 43)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sg26a"]
+_data = {
+"RESET": SubResource("Animation_fllhc"),
+"descending": SubResource("Animation_gx5wg")
+}
+
+[node name="Continue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_aadkb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 144.0
+color = Color(0, 0, 0, 1)
+
+[node name="continue" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 43.0
+offset_right = 154.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_fopro")
+theme_override_font_sizes/font_size = 16
+text = "CONTINUE?"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="number" type="Label" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 74.0
+offset_right = 89.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_fopro")
+theme_override_font_sizes/font_size = 16
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 72)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "descending"
+libraries = {
+"": SubResource("AnimationLibrary_sg26a")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
