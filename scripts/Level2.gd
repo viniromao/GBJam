@@ -76,12 +76,12 @@ func spawnThings(delta):
 		spawnTimer = .1
 	
 	if spawnTimer > spawnTime3 && mainTimer >= 10 && mainTimer < 25:
-		spawnPath(5)  
+		spawnPath(5) 
 		spawnTimer = 0
 		spawnTimer2 = 0
 	
 	if spawnTimer2 > spawnTime3 && mainTimer >= 25 && mainTimer < 30:
-		spawnPath(3)  
+		spawnPath(3)
 		spawnTimer2 = 0
 
 	if spawnTimer2 > spawnTime3 && mainTimer >= 30 && mainTimer < 40:
@@ -106,7 +106,6 @@ func spawnPath(index):
 	add_child(pathInstance)
 
 func increase_score(value):
-	print("chamou")
 	score += value
 	
 func decrease_lives():

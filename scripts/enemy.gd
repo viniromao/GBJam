@@ -1,13 +1,13 @@
-class_name Enemy extends Area2D
+class_name EnemyShot extends Area2D
+
+@export var speed = 150
+@export var damage = 1
 
 func die():
-	var animation_player = $anim
-
-	animation_player.play("damage")
-	await animation_player.animation_finished
-	
 	queue_free()
 
+func _physics_process(delta):
+	global_position.y += speed * delta  # Note that it's y instead of x for top-down shooting
 
 func _ready():
 	pass # 

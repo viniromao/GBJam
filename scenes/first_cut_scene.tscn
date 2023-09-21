@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bpbiseieir8f4"]
+[gd_scene load_steps=23 format=3 uid="uid://bpbiseieir8f4"]
 
 [ext_resource type="Script" path="res://scripts/firstCutScene.gd" id="1_j4m1s"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_7ml8b"]
 [ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="3_kh7hr"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_8p52l"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="5_lvg8k"]
+[ext_resource type="Script" path="res://scenes/text.gd" id="6_0mon0"]
 [ext_resource type="Texture2D" uid="uid://b3cmubkg8vno8" path="res://assets/ie.png" id="6_otrxp"]
 [ext_resource type="Texture2D" uid="uid://d4mwhsxx3r7x8" path="res://assets/mcafeelogo.png" id="7_bisw0"]
 [ext_resource type="Texture2D" uid="uid://1kvjq36ghff" path="res://assets/popup.png" id="8_sfofx"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cd0lkm8r8m3uh" path="res://assets/terminal.png" id="11_qg8mr"]
 [ext_resource type="Texture2D" uid="uid://cmmb6j0qyyic0" path="res://assets/cursor.png" id="12_b811l"]
 [ext_resource type="Texture2D" uid="uid://byj4hw7qddv7v" path="res://assets/skull.png" id="13_g4e23"]
+[ext_resource type="Script" path="res://scenes/light_text.gd" id="13_xlsv5"]
 [ext_resource type="AudioStream" uid="uid://cqcw2obgmkh7h" path="res://assets/sfx&songs/intro.mp3" id="14_u4378"]
 [ext_resource type="AudioStream" uid="uid://g5gt0gqtdopg" path="res://assets/sfx&songs/mouse_click.wav" id="15_f5yhx"]
 [ext_resource type="AudioStream" uid="uid://o8b38goq2vic" path="res://assets/sfx&songs/error_mesage_pop_up_sound.wav" id="16_vmrjm"]
@@ -87,6 +89,7 @@ text = "anti
 virus
 
 "
+script = ExtResource("6_0mon0")
 
 [node name="lives" type="Label" parent="."]
 visible = false
@@ -112,6 +115,7 @@ theme_override_fonts/font = ExtResource("5_lvg8k")
 text = "trash
 
 "
+script = ExtResource("6_0mon0")
 
 [node name="internet_icon" type="Sprite2D" parent="."]
 position = Vector2(16, 97)
@@ -127,6 +131,7 @@ theme_override_fonts/font = ExtResource("5_lvg8k")
 text = "net
 
 "
+script = ExtResource("6_0mon0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(80, 72)
@@ -157,6 +162,7 @@ machine does not
 have enough DISK SPACE
 "
 horizontal_alignment = 1
+script = ExtResource("6_0mon0")
 
 [node name="Alert" type="Sprite2D" parent="popup"]
 position = Vector2(-32.5, -7)
@@ -177,6 +183,7 @@ scale = Vector2(0.2, 0.198)
 theme_override_fonts/font = ExtResource("5_lvg8k")
 text = "OK
 "
+script = ExtResource("6_0mon0")
 
 [node name="terminal" type="Sprite2D" parent="."]
 visible = false
@@ -190,6 +197,7 @@ offset_right = 490.0
 offset_bottom = 468.0
 scale = Vector2(0.2, 0.25)
 theme_override_fonts/font = ExtResource("5_lvg8k")
+script = ExtResource("13_xlsv5")
 
 [node name="errorText" type="Label" parent="terminal"]
 offset_left = -55.0
@@ -201,6 +209,7 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_lvg8k")
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
+script = ExtResource("13_xlsv5")
 
 [node name="textTimer" type="Timer" parent="."]
 

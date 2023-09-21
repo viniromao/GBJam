@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://nse746sv02cb"]
+[gd_scene load_steps=15 format=3 uid="uid://di8tt1ebnn0v7"]
 
 [ext_resource type="Script" path="res://scripts/Level2.gd" id="1_kduxb"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_50o0m"]
@@ -9,32 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://b36ltheltxswr" path="res://assets/sfx&songs/main.mp3" id="7_5brd0"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="8_n5g7c"]
 [ext_resource type="Shader" path="res://scenes/VHS.gdshader" id="9_qiu34"]
-
-[sub_resource type="Animation" id="Animation_4mcyw"]
-resource_name = "blur"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/blur")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/amount")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
 
 [sub_resource type="Animation" id="Animation_yf1t4"]
 length = 0.001
@@ -60,6 +34,32 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_4mcyw"]
+resource_name = "blur"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rlfvs"]

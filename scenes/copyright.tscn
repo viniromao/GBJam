@@ -13,19 +13,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xv8ml")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 160.0
-offset_bottom = 144.0
-color = Color(0.835294, 0.980392, 0.815686, 1)
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 59.0
 offset_top = 53.0
 offset_right = 103.0
 offset_bottom = 66.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("1_pln33")
 theme_override_font_sizes/font_size = 8
 text = "© 2023"
@@ -36,7 +30,7 @@ offset_left = 21.0
 offset_top = 66.0
 offset_right = 141.0
 offset_bottom = 88.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("2_lsyke")
 theme_override_font_sizes/font_size = 8
 text = " Kessel, Eduga,

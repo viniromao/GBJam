@@ -29,6 +29,7 @@ var mainTimer = 0
 @export var spawnTime3 = .8
 
 var path1 = preload("res://paths/path1.tscn")
+var boss = preload("res://paths/bosspath1.tscn")
 var path2 = preload("res://paths/path2.tscn")
 var path3 = preload("res://paths/path3.tscn")
 var path10 = preload("res://paths/path10.tscn")
@@ -38,6 +39,8 @@ var enemy_scene = preload("res://actors/enemy.tscn")
 var player = null
 
 func _ready():
+	add_child(boss.instantiate())
+	
 	bg_width = bg1.texture.get_width()
 	bg2.position.x = bg_width + 80
 	player = get_tree().get_first_node_in_group("player")
@@ -73,30 +76,30 @@ func _on_player_laser_shot(laser_scene, location):
 	laser_container.add_child(laser)
 	
 func spawnThings(delta):
-	timer += delta
-	timer2 += delta
-	if (timer > spawnTime && mainTimer < 5):
-		var path3Instance = path3.instantiate()
-		add_child(path3Instance)
-		timer = 0
-	if (timer > spawnTime2 && mainTimer < 9 && mainTimer > 5):
-		var path1Instance = path1.instantiate()
-		add_child(path1Instance)
-		timer = 0
-	if (timer > spawnTime3 && mainTimer < 15 && mainTimer > 9):
-		var path10Instance = path10.instantiate()
-		add_child(path10Instance)
-		timer = 0
-	if (timer2 > spawnTime3 && mainTimer < 16 && mainTimer > 10):
-		var path11Instance = path11.instantiate()
-		add_child(path11Instance)
-		timer2 = 0
+	pass
+#	timer += delta
+#	timer2 += delta
+#	if (timer > spawnTime && mainTimer < 5):
+#		var path3Instance = path3.instantiate()
+#		add_child(path3Instance)
+#		timer = 0
+#	if (timer > spawnTime2 && mainTimer < 9 && mainTimer > 5):
+#		var path1Instance = path1.instantiate()
+#		add_child(path1Instance)
+#		timer = 0
+#	if (timer > spawnTime3 && mainTimer < 15 && mainTimer > 9):
+#		var path10Instance = path10.instantiate()
+#		add_child(path10Instance)
+#		timer = 0
+#	if (timer2 > spawnTime3 && mainTimer < 16 && mainTimer > 10):
+#		var path11Instance = path11.instantiate()
+#		add_child(path11Instance)
+#		timer2 = 0
 		
 	
 	
 
 func increase_score(value):
-	print("chamou")
 	score += value
 	
 func decrease_lives():

@@ -14,4 +14,4 @@ func _process(delta):
 		_on_button_pressed()
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/first_cut_scene.tscn")

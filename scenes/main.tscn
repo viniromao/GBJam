@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpnn8f55l5flp"]
+[gd_scene load_steps=9 format=3 uid="uid://bpnn8f55l5flp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_77da5"]
 [ext_resource type="PackedScene" uid="uid://b77e2sp5ruhpi" path="res://actors/player.tscn" id="2_1ngoq"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="3_4ngj1"]
 [ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="4_lksie"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_mq50u"]
+[ext_resource type="Script" path="res://scenes/text.gd" id="5_16f1r"]
 [ext_resource type="AudioStream" uid="uid://bnuacrq7cssio" path="res://assets/sfx&songs/epic_ost.mp3" id="7_n18ot"]
-[ext_resource type="PackedScene" uid="uid://8qwbwwc4ani" path="res://scenes/game_over.tscn" id="8_yp7ln"]
+[ext_resource type="PackedScene" uid="uid://bx0j40dh841tf" path="res://scenes/game_over.tscn" id="8_yp7ln"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_77da5")
@@ -31,6 +32,7 @@ offset_bottom = 191.0
 scale = Vector2(0.3, 0.297)
 theme_override_fonts/font = ExtResource("4_mq50u")
 text = "scr:  "
+script = ExtResource("5_16f1r")
 
 [node name="lives" type="Label" parent="."]
 offset_left = 99.0
@@ -40,6 +42,7 @@ offset_bottom = 190.0
 scale = Vector2(0.3, 0.297)
 theme_override_fonts/font = ExtResource("4_mq50u")
 text = "<3"
+script = ExtResource("5_16f1r")
 
 [node name="Player" parent="." instance=ExtResource("2_1ngoq")]
 position = Vector2(19, 72)

@@ -1,16 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://ffl8m68kiwq1"]
+[gd_scene load_steps=9 format=3 uid="uid://l6lfafwmyy45"]
 
-[ext_resource type="Script" path="res://actors/enemy.gd" id="1_x17tw"]
-[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_c2efk"]
-[ext_resource type="Texture2D" uid="uid://c6hx087n47mka" path="res://assets/Texto do seu parágrafo (40 × 40 px).png" id="2_rryqw"]
+[ext_resource type="Script" path="res://actors/boss.gd" id="1_2sobk"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_dnrts"]
+[ext_resource type="Texture2D" uid="uid://cvpsq7io1n024" path="res://assets/boss_horse.png" id="3_d56my"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0w26d"]
 resource_local_to_scene = true
-shader = ExtResource("2_c2efk")
+shader = ExtResource("2_dnrts")
 shader_parameter/active = false
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6qh5"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5e73"]
+size = Vector2(71, 68)
+
+[sub_resource type="Animation" id="Animation_w5vhr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_c7ge1"]
 resource_name = "damage"
@@ -28,41 +43,24 @@ tracks/0/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_w5vhr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pk67e"]
 _data = {
 "RESET": SubResource("Animation_w5vhr"),
 "damage": SubResource("Animation_c7ge1")
 }
 
-[node name="Enemy" type="Area2D"]
+[node name="Boss" type="Area2D"]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_x17tw")
+script = ExtResource("1_2sobk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0w26d")
-rotation = 3.14159
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_rryqw")
-flip_h = true
+texture = ExtResource("3_d56my")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_m6qh5")
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_o5e73")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(15, 0)
