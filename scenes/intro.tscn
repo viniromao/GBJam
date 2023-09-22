@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch04vu44neo35"]
+[gd_scene load_steps=8 format=3 uid="uid://ch04vu44neo35"]
 
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="2_5esxe"]
 [ext_resource type="Script" path="res://scenes/text.gd" id="2_a5x61"]
+[ext_resource type="AudioStream" uid="uid://g5gt0gqtdopg" path="res://assets/sfx&songs/mouse_click.wav" id="3_aifpy"]
 
 [sub_resource type="GDScript" id="GDScript_qbruq"]
 script/source = "extends Control
@@ -16,6 +17,11 @@ func _process(delta):
 
 func _on_timer_timeout():
 	get_tree().change_scene_to_file(\"res://scenes/copyright.tscn\")
+
+
+func _on_anim_animation_finished(anim_name):
+	$click.play()
+	
 "
 
 [sub_resource type="Animation" id="Animation_tqjij"]
@@ -98,4 +104,8 @@ position_smoothing_enabled = true
 wait_time = 4.0
 autostart = true
 
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_aifpy")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

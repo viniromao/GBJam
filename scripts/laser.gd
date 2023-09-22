@@ -19,7 +19,7 @@ func _on_area_entered(area):
 		area.die()
 		queue_free()
 		
-	if area is Enemy:
+	if area is Enemy3:
 		area.die()
 		queue_free()
 		

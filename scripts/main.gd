@@ -39,10 +39,10 @@ var enemy_scene = preload("res://actors/enemy.tscn")
 var player = null
 
 func _ready():
-	add_child(boss.instantiate())
+#	add_child(boss.instantiate())
 	
 	bg_width = bg1.texture.get_width()
-	bg2.position.x = bg_width + 80
+	bg2.position.x = bg_width + 79
 	player = get_tree().get_first_node_in_group("player")
 	assert(player != null)
 	player.global_position = spawn_player_pos.global_position
@@ -55,10 +55,10 @@ func _process(delta):
 	bg1.position.x -= scroll_speed * delta
 	bg2.position.x -= scroll_speed * delta
 
-	if bg1.position.x <= -bg_width + 80:
+	if bg1.position.x <= -bg_width + 79:
 		bg1.position.x = bg2.position.x + bg_width
 
-	if bg2.position.x <= -bg_width + 80:
+	if bg2.position.x <= -bg_width + 79:
 		bg2.position.x = bg1.position.x + bg_width
 	
 	
@@ -76,25 +76,24 @@ func _on_player_laser_shot(laser_scene, location):
 	laser_container.add_child(laser)
 	
 func spawnThings(delta):
-	pass
-#	timer += delta
-#	timer2 += delta
-#	if (timer > spawnTime && mainTimer < 5):
-#		var path3Instance = path3.instantiate()
-#		add_child(path3Instance)
-#		timer = 0
-#	if (timer > spawnTime2 && mainTimer < 9 && mainTimer > 5):
-#		var path1Instance = path1.instantiate()
-#		add_child(path1Instance)
-#		timer = 0
-#	if (timer > spawnTime3 && mainTimer < 15 && mainTimer > 9):
-#		var path10Instance = path10.instantiate()
-#		add_child(path10Instance)
-#		timer = 0
-#	if (timer2 > spawnTime3 && mainTimer < 16 && mainTimer > 10):
-#		var path11Instance = path11.instantiate()
-#		add_child(path11Instance)
-#		timer2 = 0
+	timer += delta
+	timer2 += delta
+	if (timer > spawnTime && mainTimer < 5):
+		var path3Instance = path3.instantiate()
+		add_child(path3Instance)
+		timer = 0
+	if (timer > spawnTime2 && mainTimer < 9 && mainTimer > 5):
+		var path1Instance = path1.instantiate()
+		add_child(path1Instance)
+		timer = 0
+	if (timer > spawnTime3 && mainTimer < 15 && mainTimer > 9):
+		var path10Instance = path10.instantiate()
+		add_child(path10Instance)
+		timer = 0
+	if (timer2 > spawnTime3 && mainTimer < 16 && mainTimer > 10):
+		var path11Instance = path11.instantiate()
+		add_child(path11Instance)
+		timer2 = 0
 		
 	
 	

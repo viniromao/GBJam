@@ -1,184 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://kokif0x1tf23"]
+[gd_scene load_steps=6 format=3 uid="uid://kokif0x1tf23"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_34ijr"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="1_u62l8"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="2_ghfv8"]
 [ext_resource type="Script" path="res://scenes/text.gd" id="3_rtk7g"]
-
-[sub_resource type="Animation" id="Animation_tksnl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("anim2/PushEnter:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.0588235, 0.219608, 0.0588235, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("anim/Title2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1.03526),
-"update": 0,
-"values": [Vector2(19, 7)]
-}
-
-[sub_resource type="Animation" id="Animation_nsln4"]
-resource_name = "blinking"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("anim2/PushEnter:theme_override_colors/font_color")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_vli00"]
-resource_name = "descending"
-length = 1.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("anim/Title:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(41, -20), Vector2(41, 25)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("anim/Title2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(41, -20), Vector2(41, 25)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("anim/Title3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 1.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(41, -20), Vector2(41, 25)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("anim/Title4:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.4, 1.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(41, -20), Vector2(41, 25)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5rasv"]
-_data = {
-"RESET": SubResource("Animation_tksnl"),
-"blinking": SubResource("Animation_nsln4"),
-"descending": SubResource("Animation_vli00")
-}
+[ext_resource type="AudioStream" uid="uid://ihn3k6rds72b" path="res://assets/sfx&songs/main_theme.mp3" id="5_st83v"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_34ijr")
 
-[node name="anim" type="AnimationPlayer" parent="."]
-autoplay = "blinking"
-libraries = {
-"": SubResource("AnimationLibrary_5rasv")
-}
-
-[node name="Title4" type="Label" parent="anim"]
-self_modulate = Color(1, 1, 1, 0.176471)
-offset_left = 19.0
-offset_top = -20.0
-offset_right = 179.0
-offset_bottom = 3.00001
-scale = Vector2(0.8, 0.8)
-theme_override_fonts/font = ExtResource("1_u62l8")
-theme_override_font_sizes/font_size = 16
-text = "HackerDOOM"
-script = ExtResource("3_rtk7g")
-
-[node name="Title3" type="Label" parent="anim"]
-modulate = Color(1, 1, 1, 0.490196)
-offset_left = 19.0
-offset_top = -20.0
-offset_right = 179.0
-offset_bottom = 3.00001
-scale = Vector2(0.8, 0.8)
-theme_override_fonts/font = ExtResource("1_u62l8")
-theme_override_font_sizes/font_size = 16
-text = "HackerDOOM"
-script = ExtResource("3_rtk7g")
-
-[node name="Title2" type="Label" parent="anim"]
-modulate = Color(1, 1, 1, 0.784314)
-offset_left = 19.0
-offset_top = 7.0
-offset_right = 179.0
-offset_bottom = 30.0
-scale = Vector2(0.8, 0.8)
-theme_override_fonts/font = ExtResource("1_u62l8")
-theme_override_font_sizes/font_size = 16
-text = "HackerDOOM"
-script = ExtResource("3_rtk7g")
-
-[node name="Title" type="Label" parent="anim"]
-offset_left = 19.0
-offset_top = -20.0
-offset_right = 179.0
-offset_bottom = 3.00003
-scale = Vector2(0.8, 0.8)
-theme_override_fonts/font = ExtResource("1_u62l8")
-theme_override_font_sizes/font_size = 16
-text = "HackerDOOM"
-script = ExtResource("3_rtk7g")
-
-[node name="anim2" type="AnimationPlayer" parent="."]
-autoplay = "blinking"
-libraries = {
-"": SubResource("AnimationLibrary_5rasv")
-}
-
-[node name="PushEnter" type="Label" parent="anim2"]
-offset_left = 41.0
-offset_top = 67.0
-offset_right = 121.0
-offset_bottom = 78.0
-theme_override_colors/font_color = Color(0, 0, 0, 0)
-theme_override_fonts/font = ExtResource("2_ghfv8")
-theme_override_font_sizes/font_size = 8
-text = "Push Enter"
-script = ExtResource("3_rtk7g")
+[node name="blink" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
@@ -190,4 +23,55 @@ position = Vector2(80, 72)
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
+[node name="title" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 9.0
+offset_right = 176.0
+offset_bottom = 32.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_shadow_color = Color(0.878431, 0.972549, 0.815686, 1)
+theme_override_fonts/font = ExtResource("2_ghfv8")
+text = "HackerDOOM"
+script = ExtResource("3_rtk7g")
+
+[node name="start" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 63.0
+offset_right = 198.0
+offset_bottom = 86.0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("1_u62l8")
+text = "Push start"
+script = ExtResource("3_rtk7g")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 21.0
+offset_top = 110.0
+offset_right = 141.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_fonts/font = ExtResource("2_ghfv8")
+theme_override_font_sizes/font_size = 8
+text = " Kessel, Eduga,
+Vityusha, Juice
+ Ivanez"
+horizontal_alignment = 1
+script = ExtResource("3_rtk7g")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 57.0
+offset_top = 97.0
+offset_right = 101.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_fonts/font = ExtResource("1_u62l8")
+theme_override_font_sizes/font_size = 8
+text = "© 2023"
+script = ExtResource("3_rtk7g")
+
+[node name="main_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_st83v")
+autoplay = true
+
+[connection signal="timeout" from="blink" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
