@@ -6,12 +6,17 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Play the "descending" animation
-	animation_player.play("descending")
-
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("ui_accept"):
-		_on_button_pressed()
+	pass
 
-func _on_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+func call_first_scene():
+	get_tree().change_scene_to_file("res://scenes/first_cut_scene.tscn")
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):  
+		call_first_scene()
+		
+func _on_blink_timeout():
+	$start.visible = not $start.visible

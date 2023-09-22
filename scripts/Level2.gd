@@ -67,23 +67,23 @@ func _on_player_laser_shot(laser_scene, location):
 func spawnThings(delta):
 	spawnTimer += delta
 	spawnTimer2 += delta
-	
+
 	if spawnTimer > spawnTime3 && mainTimer < 6:
-		spawnPath(1)  
+		spawnPath(1)
 		spawnTimer = .1
-	
+
 	if spawnTimer > spawnTime3 && mainTimer >= 5 && mainTimer < 20:
 		spawnPath(5) 
 		spawnPath(7)
 		spawnTimer = 0
 		spawnTimer2 = 0
-	
+
 	if spawnTimer2 > spawnTime3 && mainTimer >= 20 && mainTimer < 30:
-		spawnPath(3)  
+		spawnPath(3)
 		spawnTimer2 = 0
 
 	if spawnTimer2 > spawnTime3 && mainTimer >= 30 && mainTimer < 40:
-		spawnPath(6)  
+		spawnPath(6)
 		spawnTimer = 0
 		spawnTimer2 = 0
 
@@ -92,22 +92,23 @@ func spawnThings(delta):
 		spawnPath(12)
 		spawnTimer = 0
 		spawnTimer2 = 0 
-		
+
 	if spawnTimer2 > spawnTime3 && mainTimer >= 46 && mainTimer < 50:
 		spawnPath(13)
 		spawnPath(8)
 		spawnTimer = 0
 		spawnTimer2 = 0 
-		
+
 	if spawnTimer2 > spawnTime3 && mainTimer >= 50 && mainTimer < 60:
 		spawnPath(10) 
 		spawnPath(2) 
 		spawnTimer = 0
 		spawnTimer2 = 0 
-		
-	
+
+
 	if spawnTimer > spawnTime3 && mainTimer < 60:
-		get_tree().change_scene_to_file("res://scenes/firstCutScene.tscn")
+		pass
+#		get_tree().change_scene_to_file("res://scenes/firstCutScene.tscn")
 
 func spawnPath(index):
 	var pathInstance = pathMapping[index].instantiate()

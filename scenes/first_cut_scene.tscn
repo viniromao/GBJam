@@ -1,22 +1,28 @@
-[gd_scene load_steps=21 format=3 uid="uid://bpbiseieir8f4"]
+[gd_scene load_steps=27 format=3 uid="uid://bpbiseieir8f4"]
 
 [ext_resource type="Script" path="res://scripts/firstCutScene.gd" id="1_j4m1s"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_7ml8b"]
 [ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="3_kh7hr"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_8p52l"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="5_lvg8k"]
-[ext_resource type="Texture2D" uid="uid://b3cmubkg8vno8" path="res://assets/ie.png" id="6_otrxp"]
+[ext_resource type="Script" path="res://scripts/light_text.gd" id="6_p2q3a"]
 [ext_resource type="Texture2D" uid="uid://d4mwhsxx3r7x8" path="res://assets/mcafeelogo.png" id="7_bisw0"]
+[ext_resource type="Texture2D" uid="uid://dgjyvohr48ak1" path="res://assets/bin.png" id="7_oobsl"]
+[ext_resource type="Script" path="res://scripts/text.gd" id="7_sifnv"]
 [ext_resource type="Texture2D" uid="uid://1kvjq36ghff" path="res://assets/popup.png" id="8_sfofx"]
+[ext_resource type="Texture2D" uid="uid://cxx517pgkqpti" path="res://assets/ineternet.png" id="8_uyaxg"]
 [ext_resource type="Texture2D" uid="uid://d3drfhuwbfyw8" path="res://assets/alert.png" id="9_rfd6l"]
+[ext_resource type="Texture2D" uid="uid://r4r8km2n86g2" path="res://assets/briefcase.png" id="9_wvkka"]
 [ext_resource type="Texture2D" uid="uid://c5br2tvv7h50p" path="res://assets/button.png" id="10_loyjq"]
 [ext_resource type="Texture2D" uid="uid://cd0lkm8r8m3uh" path="res://assets/terminal.png" id="11_qg8mr"]
 [ext_resource type="Texture2D" uid="uid://cmmb6j0qyyic0" path="res://assets/cursor.png" id="12_b811l"]
 [ext_resource type="Texture2D" uid="uid://byj4hw7qddv7v" path="res://assets/skull.png" id="13_g4e23"]
-[ext_resource type="AudioStream" uid="uid://cqcw2obgmkh7h" path="res://assets/sfx&songs/intro.mp3" id="14_u4378"]
 [ext_resource type="AudioStream" uid="uid://g5gt0gqtdopg" path="res://assets/sfx&songs/mouse_click.wav" id="15_f5yhx"]
 [ext_resource type="AudioStream" uid="uid://o8b38goq2vic" path="res://assets/sfx&songs/error_mesage_pop_up_sound.wav" id="16_vmrjm"]
 [ext_resource type="AudioStream" uid="uid://brny704taxqa0" path="res://assets/sfx&songs/text_display_sound.wav" id="17_usb37"]
+[ext_resource type="AudioStream" uid="uid://byb77j2loib7e" path="res://assets/sfx&songs/cat_photo_scene_demo_2.mp3" id="19_q0gm7"]
+[ext_resource type="Texture2D" uid="uid://0kuikbj5cnw5" path="res://assets/cat_photo.png" id="22_qo1gf"]
+[ext_resource type="AudioStream" uid="uid://bm81fk0s2v862" path="res://assets/sfx&songs/virus_attack.mp3" id="23_rek7i"]
 
 [sub_resource type="Animation" id="Animation_7i7jt"]
 length = 0.001
@@ -78,15 +84,16 @@ text = "scr:  "
 
 [node name="Label" type="Label" parent="."]
 offset_left = 5.0
-offset_top = 37.0
+offset_top = 25.0
 offset_right = 277.0
-offset_bottom = 94.0
+offset_bottom = 82.0
 scale = Vector2(0.399589, 0.395951)
 theme_override_fonts/font = ExtResource("5_lvg8k")
 text = "anti
 virus
 
 "
+script = ExtResource("6_p2q3a")
 
 [node name="lives" type="Label" parent="."]
 visible = false
@@ -98,45 +105,71 @@ scale = Vector2(0.3, 0.297)
 theme_override_fonts/font = ExtResource("4_8p52l")
 text = "<3"
 
-[node name="trash_icon" type="Sprite2D" parent="."]
-position = Vector2(17, 68)
-texture = ExtResource("6_otrxp")
-
-[node name="Label" type="Label" parent="trash_icon"]
-offset_left = -16.0
-offset_top = 8.0
-offset_right = 256.0
-offset_bottom = 46.0
-scale = Vector2(0.4, 0.4)
-theme_override_fonts/font = ExtResource("5_lvg8k")
-text = "trash
-
-"
-
-[node name="internet_icon" type="Sprite2D" parent="."]
-position = Vector2(16, 97)
-texture = ExtResource("6_otrxp")
-
-[node name="Label" type="Label" parent="internet_icon"]
-offset_left = -7.0
-offset_top = 8.0
-offset_right = 265.0
-offset_bottom = 46.0
+[node name="Label4" type="Label" parent="."]
+offset_left = 9.0
+offset_top = 121.0
+offset_right = 281.0
+offset_bottom = 159.0
 scale = Vector2(0.4, 0.4)
 theme_override_fonts/font = ExtResource("5_lvg8k")
 text = "net
 
 "
+script = ExtResource("7_sifnv")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 87.0
+offset_right = 276.0
+offset_bottom = 125.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("5_lvg8k")
+text = "trash
+
+"
+script = ExtResource("6_p2q3a")
+
+[node name="trash_icon" type="Sprite2D" parent="."]
+position = Vector2(17, 77)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_oobsl")
+
+[node name="internet_icon" type="Sprite2D" parent="."]
+position = Vector2(16, 110)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_uyaxg")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 58.0
+offset_right = 273.0
+offset_bottom = 96.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("5_lvg8k")
+text = "photos
+
+"
+script = ExtResource("6_p2q3a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(80, 72)
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
+[node name="folder" type="Sprite2D" parent="."]
+position = Vector2(16, 51)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_wvkka")
+
 [node name="icon" type="Sprite2D" parent="."]
-position = Vector2(18, 25)
+position = Vector2(18, 15)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("7_bisw0")
+
+[node name="kitty" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(96, 72)
+texture = ExtResource("22_qo1gf")
 
 [node name="popup" type="Sprite2D" parent="."]
 visible = false
@@ -157,6 +190,7 @@ machine does not
 have enough DISK SPACE
 "
 horizontal_alignment = 1
+script = ExtResource("7_sifnv")
 
 [node name="Alert" type="Sprite2D" parent="popup"]
 position = Vector2(-32.5, -7)
@@ -177,19 +211,34 @@ scale = Vector2(0.2, 0.198)
 theme_override_fonts/font = ExtResource("5_lvg8k")
 text = "OK
 "
+script = ExtResource("7_sifnv")
 
 [node name="terminal" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(77, 72)
+position = Vector2(75, 73)
 texture = ExtResource("11_qg8mr")
+
+[node name="press_a" type="Label" parent="terminal"]
+visible = false
+offset_left = -17.0
+offset_top = 59.0
+offset_right = 223.0
+offset_bottom = 97.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("5_lvg8k")
+text = "PRESS A TO SKIP
+
+"
+script = ExtResource("6_p2q3a")
 
 [node name="terminalText" type="Label" parent="terminal"]
 offset_left = -54.0
 offset_top = -64.0
 offset_right = 490.0
-offset_bottom = 468.0
+offset_bottom = 448.0
 scale = Vector2(0.2, 0.25)
 theme_override_fonts/font = ExtResource("5_lvg8k")
+script = ExtResource("6_p2q3a")
 
 [node name="errorText" type="Label" parent="terminal"]
 offset_left = -55.0
@@ -201,6 +250,10 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_lvg8k")
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
+script = ExtResource("6_p2q3a")
+
+[node name="journal_timer" type="Timer" parent="."]
+wait_time = 0.05
 
 [node name="textTimer" type="Timer" parent="."]
 
@@ -218,15 +271,20 @@ libraries = {
 }
 
 [node name="cursor" type="Sprite2D" parent="."]
-position = Vector2(143, 22)
+position = Vector2(159, 6)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_b811l")
+offset = Vector2(-10, 0)
 
 [node name="flickerTimer" type="Timer" parent="."]
 
 [node name="flickerTimer2" type="Timer" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_u4378")
+[node name="flickerTimer3" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="cat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_q0gm7")
 autoplay = true
 
 [node name="click" type="AudioStreamPlayer" parent="."]
@@ -237,3 +295,9 @@ stream = ExtResource("16_vmrjm")
 
 [node name="terminal_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_usb37")
+
+[node name="virus_attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_rek7i")
+
+[connection signal="timeout" from="journal_timer" to="." method="_on_journal_timer_timeout"]
+[connection signal="timeout" from="flickerTimer3" to="." method="_on_flicker_timer_3_timeout"]

@@ -1,22 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://uy28itorthtr"]
+[gd_scene load_steps=6 format=3 uid="uid://dl0yf8nic2d24"]
 
 [ext_resource type="Script" path="res://scripts/continue.gd" id="1_aadkb"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="2_fopro"]
-
-[sub_resource type="Animation" id="Animation_gx5wg"]
-resource_name = "descending"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("continue:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(10, -20), Vector2(10, 35)]
-}
 
 [sub_resource type="Animation" id="Animation_fllhc"]
 length = 0.001
@@ -31,6 +16,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(10, 43)]
+}
+
+[sub_resource type="Animation" id="Animation_gx5wg"]
+resource_name = "descending"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("continue:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10, -20), Vector2(10, 35)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sg26a"]

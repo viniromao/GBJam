@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var spawn_player_pos = $PlayerSpawnPos
 @onready var laser_container = $LaserContainer
-@onready var gos = $gameOverLayer/GameOver
 
 @export var player_initial_position = Vector2(0,0)
 @export var scroll_speed = 20.0
@@ -29,6 +28,7 @@ var mainTimer = 0
 @export var spawnTime3 = .8
 
 var path1 = preload("res://paths/path1.tscn")
+var boss = preload("res://paths/bosspath1.tscn")
 var path2 = preload("res://paths/path2.tscn")
 var path3 = preload("res://paths/path3.tscn")
 var path10 = preload("res://paths/path10.tscn")
@@ -38,8 +38,10 @@ var enemy_scene = preload("res://actors/enemy.tscn")
 var player = null
 
 func _ready():
+#	add_child(boss.instantiate())
+	
 	bg_width = bg1.texture.get_width()
-	bg2.position.x = bg_width + 80
+	bg2.position.x = bg_width + 79
 	player = get_tree().get_first_node_in_group("player")
 	assert(player != null)
 	player.global_position = spawn_player_pos.global_position
@@ -52,10 +54,10 @@ func _process(delta):
 	bg1.position.x -= scroll_speed * delta
 	bg2.position.x -= scroll_speed * delta
 
-	if bg1.position.x <= -bg_width + 80:
+	if bg1.position.x <= -bg_width + 79:
 		bg1.position.x = bg2.position.x + bg_width
 
-	if bg2.position.x <= -bg_width + 80:
+	if bg2.position.x <= -bg_width + 79:
 		bg2.position.x = bg1.position.x + bg_width
 	
 	
@@ -96,7 +98,6 @@ func spawnThings(delta):
 	
 
 func increase_score(value):
-	print("chamou")
 	score += value
 	
 func decrease_lives():
@@ -104,4 +105,4 @@ func decrease_lives():
 
 func _on_player_killed():
 	await get_tree().create_timer(0.5).timeout
-	gos.visible = true
+	get_tree().change_scene_to_file("res://scenes/continue.tscn")

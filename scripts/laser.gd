@@ -19,6 +19,14 @@ func _on_area_entered(area):
 		area.die()
 		queue_free()
 		
+	if area is Enemy3:
+		area.die()
+		queue_free()
+		
+	if area is Boss:
+		area.take_damage()
+		queue_free()
+		
 	var root_script = get_tree().current_scene
 	if root_script:
 		root_script.increase_score(20)

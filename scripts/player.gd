@@ -55,7 +55,6 @@ func set_invincible():
 		return
 	
 	invincible = true
-#	$invincible.start()
 	$flicker.start(.05)
 	
 	var timer = get_tree().create_timer(3)

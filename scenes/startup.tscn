@@ -1,0 +1,168 @@
+[gd_scene load_steps=7 format=3 uid="uid://df1cmgu77ubyx"]
+
+[ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="1_0yj3l"]
+[ext_resource type="Script" path="res://scripts/light_text.gd" id="2_tw5sh"]
+[ext_resource type="AudioStream" uid="uid://g5gt0gqtdopg" path="res://assets/sfx&songs/mouse_click.wav" id="3_8tcao"]
+[ext_resource type="AudioStream" uid="uid://deruig3xodbll" path="res://assets/sfx&songs/pc_noise_1.wav" id="4_gsgo3"]
+[ext_resource type="AudioStream" uid="uid://brny704taxqa0" path="res://assets/sfx&songs/text_display_sound.wav" id="5_col3f"]
+
+[sub_resource type="GDScript" id="GDScript_qbruq"]
+script/source = "extends Control
+
+var dots = \"\"
+var loading_text = \"Loading Computer System\"
+var pitch: float = 0.11  # Initial pitch
+var pitch_increment: float = 0.01  # Amount to change the pitch each frame
+var max_pitch: float = 1.0  # Maximum pitch
+var min_pitch: float = 0.1  # Minimum pitch
+var show_text = false
+var slow_down_noise = false
+var slow_down_velocity = 0.1
+var text_lines = [\"Changes not staged for commit:\\n\", \"  (use git add <file>... to \\n\", \"update what will be committed)\\n\", \"  (use git restore <file>...to \\n\", \"discard changes in working \\n\", \"directory)\\n\", \"    modified:   scripts/main.gd\\n\", \"    modified:   scripts/player.gd\\n\", \"Untracked files:\\n\", \"  (use git add <file>... to\\n\", \"include in what will be committed)\\n\", \"     assets/alert.png\\n\", \"     assets/alert.png.import\\n\", \"     assets/button.png\\n\", \"     assets/button.png.import\\n\", \"     assets/cursor.png\\n\", \"     assets/popup.png\\n\", \"     assets/popup.png.import\\n\", \"     assets/terminal.png\\n\", \"     scenes/firstCutScene.tscn\\n\", \"     scripts/firstCutScene.gd\\n\", \"\\n\", \"no changes added to commit (use\\n\", \"git add and/or git commit -a)\\n\", \"PS C:-Users-someUser-OneDrive-\\n\", \"Desktop-GBJam>\\n\"]
+var text_lines2 = [\"Loading Files...\\n\", \"Loading GBJAM competitors\\n\", \"Loading all the stuff we need\\n\", \"Loading CAT PHOTOS\\n\", \"Are you reading this?\\n\", \"Loading a lot of random stuff\\n\", \"Loading easter eggs\\n\", \"Loading very cute cat photos\" ]
+var current_line = 0
+var current_line2 = 0
+var update_text = true
+
+@onready var audio_player = $computer_noise
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	audio_player.play()
+	audio_player.pitch_scale = pitch 
+	$Timer.start()  # Start the main Timer when the scene loads.
+	$dots_timer.start()  # Start the DotsTimer to control dot appearance.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if show_text && update_text:
+		$text.text = loading_text + dots
+		
+	if slow_down_noise:
+		audio_player.volume_db -= slow_down_velocity
+	
+	if pitch_increment == 0: return
+	
+	
+	pitch += pitch_increment  # Increment the pitch
+
+	if pitch >= max_pitch:
+		pitch_increment *= 0
+		$click.play()
+		show_text = true
+		
+		var timer = get_tree().create_timer(2)
+		await timer.timeout
+		
+		slow_down_noise = true
+		
+		var timer2 = get_tree().create_timer(2)
+		await timer2.timeout
+		
+		$text.text = \"\"
+		update_text = false
+		$text_timer.start()
+		
+		
+		
+
+	audio_player.pitch_scale = pitch  # Apply the new pitch
+
+	# Loop the audio with the last pitch when it finishes
+	if audio_player.playing == false:
+		audio_player.play
+
+# This function will be triggered when DotsTimer times out.
+func _on_dots_timer_timeout():
+	# Append one dot at a time until we have 3 dots.
+	if dots.length() < 3:
+		dots += \".\"
+	else:
+		# Reset the dots string if we have 3 dots.
+		dots = \"\"
+
+	
+func _on_text_timer_timeout():
+	if current_line < text_lines.size():
+		if not $terminal_sound.playing:
+			$terminal_sound.play()
+		$text.text += text_lines[current_line]
+		current_line += 1
+	else:
+		$text_timer.stop()
+		$terminal_sound.stop()
+		$text.text = \"\"
+		$text_timer2.start()
+
+
+func _on_text_timer_2_timeout():
+	if current_line2 < text_lines2.size():
+		if not $terminal_sound.playing:
+			$terminal_sound.play()
+		$text.text += text_lines2[current_line2]
+		current_line2 += 1
+	else:
+		$text_timer.stop()
+		$terminal_sound.stop()
+		$text.text = \"Everything loaded successfully\\n Starting machine in a few seconds\"
+		$text_timer2.start()
+		
+		var timer2 = get_tree().create_timer(2)
+		await timer2.timeout
+		
+		get_tree().change_scene_to_file(\"res://scenes/main_menu.tscn\")
+		
+"
+
+[node name="startup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_qbruq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 72)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 707.312
+autostart = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.0313726, 0.0941176, 0.12549, 1)
+polygon = PackedVector2Array(0, -1, -22, 30, -28, 102, -3, 189, 130, 180, 217, 136, 197, 40, 153, -16, 63, -34)
+
+[node name="text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 106.0
+offset_bottom = 35.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_0yj3l")
+theme_override_font_sizes/font_size = 8
+script = ExtResource("2_tw5sh")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8tcao")
+pitch_scale = 0.5
+
+[node name="dots_timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="computer_noise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gsgo3")
+
+[node name="text_timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="text_timer2" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="terminal_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_col3f")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="dots_timer" to="." method="_on_dots_timer_timeout"]
+[connection signal="timeout" from="text_timer" to="." method="_on_text_timer_timeout"]
+[connection signal="timeout" from="text_timer2" to="." method="_on_text_timer_2_timeout"]

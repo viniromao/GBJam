@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bau1avtqeh3p7"]
+[gd_scene load_steps=5 format=3 uid="uid://bau1avtqeh3p7"]
 
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="1_pln33"]
 [ext_resource type="Script" path="res://scripts/copyright.gd" id="1_xv8ml"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="2_lsyke"]
+[ext_resource type="Script" path="res://scripts/text.gd" id="3_tuvx1"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -13,22 +14,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xv8ml")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 160.0
-offset_bottom = 144.0
-color = Color(0.835294, 0.980392, 0.815686, 1)
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 59.0
 offset_top = 53.0
 offset_right = 103.0
 offset_bottom = 66.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("1_pln33")
 theme_override_font_sizes/font_size = 8
 text = "© 2023"
+script = ExtResource("3_tuvx1")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
@@ -36,11 +32,14 @@ offset_left = 21.0
 offset_top = 66.0
 offset_right = 141.0
 offset_bottom = 88.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("2_lsyke")
 theme_override_font_sizes/font_size = 8
 text = " Kessel, Eduga,
-Vityusha, Juice"
+Vityusha, Juice
+ Ivanez"
+horizontal_alignment = 1
+script = ExtResource("3_tuvx1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(80, 72)
