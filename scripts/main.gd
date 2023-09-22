@@ -6,11 +6,6 @@ extends Node2D
 @export var player_initial_position = Vector2(0,0)
 @export var scroll_speed = 20.0
 
-@onready var bg1 = $bg1
-@onready var bg2 = $bg2
-
-var bg_width
-
 func pad_with_zeros(number, width):
 	var str_num = str(number)
 	while str_num.length() < width:
@@ -40,26 +35,15 @@ var player = null
 func _ready():
 #	add_child(boss.instantiate())
 	
-	bg_width = bg1.texture.get_width()
-	bg2.position.x = bg_width + 79
 	player = get_tree().get_first_node_in_group("player")
 	assert(player != null)
 	player.global_position = spawn_player_pos.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.killed.connect(_on_player_killed)
+	scene_manager.set_last_scene("res://scenes/main.tscn")
 
 func _process(delta):
 	mainTimer += delta
-	
-	bg1.position.x -= scroll_speed * delta
-	bg2.position.x -= scroll_speed * delta
-
-	if bg1.position.x <= -bg_width + 79:
-		bg1.position.x = bg2.position.x + bg_width
-
-	if bg2.position.x <= -bg_width + 79:
-		bg2.position.x = bg1.position.x + bg_width
-	
 	
 	var padded_score = pad_with_zeros(score, 8) 
 	$score.text = "scr: " + padded_score
@@ -93,9 +77,6 @@ func spawnThings(delta):
 		var path11Instance = path11.instantiate()
 		add_child(path11Instance)
 		timer2 = 0
-		
-	
-	
 
 func increase_score(value):
 	score += value

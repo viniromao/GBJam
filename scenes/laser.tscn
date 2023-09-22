@@ -11,7 +11,7 @@ radius = 1.0
 height = 10.0
 
 [node name="Laser" type="Area2D"]
-position = Vector2(1, 10)
+position = Vector2(1, 1)
 rotation = 1.5708
 collision_layer = 4
 collision_mask = 2
@@ -32,7 +32,7 @@ scale = Vector2(0.1, 0.075)
 
 [node name="sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_6djfa")
-volume_db = -15.698
+volume_db = -23.088
 autoplay = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

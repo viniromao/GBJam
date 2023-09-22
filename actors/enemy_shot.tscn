@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1hq6tnka0q7l"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_weeyy"]
-[ext_resource type="Texture2D" uid="uid://b88frj8cec0jl" path="res://assets/enemy_shot.png" id="2_5l8c1"]
+[ext_resource type="Texture2D" path="res://assets/enemy_shot.png" id="2_5l8c1"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_6ew3r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0w26d"]

@@ -8,7 +8,8 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_pressed("ui_accept"):
-		get_tree().change_scene_to_file("res://scenes/level2.tscn")
+		print(scene_manager.get_last_scene())
+		get_tree().change_scene_to_file(scene_manager.get_last_scene())
 
 func _on_timer_timeout():
 	if seconds == 0:
