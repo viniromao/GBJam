@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/firstCutScene.gd" id="1_j4m1s"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="2_7ml8b"]
-[ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="3_kh7hr"]
+[ext_resource type="Texture2D" uid="uid://dq8ip72buy4vr" path="res://assets/tastk_bar.png" id="3_pxdhd"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_8p52l"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="5_lvg8k"]
 [ext_resource type="Script" path="res://scripts/light_text.gd" id="6_p2q3a"]
@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://brny704taxqa0" path="res://assets/sfx&songs/text_display_sound.wav" id="17_usb37"]
 [ext_resource type="AudioStream" uid="uid://byb77j2loib7e" path="res://assets/sfx&songs/cat_photo_scene_demo_2.mp3" id="19_q0gm7"]
 [ext_resource type="Texture2D" uid="uid://0kuikbj5cnw5" path="res://assets/cat_photo.png" id="22_qo1gf"]
-[ext_resource type="AudioStream" uid="uid://bm81fk0s2v862" path="res://assets/sfx&songs/virus_attack.mp3" id="23_rek7i"]
+[ext_resource type="AudioStream" uid="uid://dnmlbj4mld0xu" path="res://assets/sfx&songs/virus_infecting_demo_ost.mp3" id="23_qhto2"]
 
 [sub_resource type="Animation" id="Animation_7i7jt"]
 length = 0.001
@@ -70,7 +70,8 @@ texture = ExtResource("2_7ml8b")
 
 [node name="task_bar" type="Sprite2D" parent="."]
 position = Vector2(80, 137)
-texture = ExtResource("3_kh7hr")
+scale = Vector2(1, 0.7)
+texture = ExtResource("3_pxdhd")
 
 [node name="score" type="Label" parent="."]
 visible = false
@@ -297,7 +298,7 @@ stream = ExtResource("16_vmrjm")
 stream = ExtResource("17_usb37")
 
 [node name="virus_attack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("23_rek7i")
+stream = ExtResource("23_qhto2")
 
 [connection signal="timeout" from="journal_timer" to="." method="_on_journal_timer_timeout"]
 [connection signal="timeout" from="flickerTimer3" to="." method="_on_flicker_timer_3_timeout"]

@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_77da5"]
 [ext_resource type="PackedScene" uid="uid://b77e2sp5ruhpi" path="res://actors/player.tscn" id="2_1ngoq"]
 [ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="3_4ngj1"]
-[ext_resource type="Texture2D" uid="uid://dubhx4tj8f1ux" path="res://assets/bg3.png" id="4_lksie"]
+[ext_resource type="Texture2D" uid="uid://dq8ip72buy4vr" path="res://assets/tastk_bar.png" id="3_oy7m4"]
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_mq50u"]
 [ext_resource type="Script" path="res://scripts/text.gd" id="5_gps16"]
-[ext_resource type="AudioStream" uid="uid://bnuacrq7cssio" path="res://assets/sfx&songs/epic_ost.mp3" id="7_n18ot"]
+[ext_resource type="AudioStream" uid="uid://c45c5c8yelrdy" path="res://assets/sfx&songs/The_Virus_Appears.wav" id="7_f5sm2"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_77da5")
@@ -21,12 +21,13 @@ texture = ExtResource("3_4ngj1")
 
 [node name="task_bar" type="Sprite2D" parent="."]
 position = Vector2(80, 137)
-texture = ExtResource("4_lksie")
+scale = Vector2(1, 0.7)
+texture = ExtResource("3_oy7m4")
 
 [node name="score" type="Label" parent="."]
-offset_left = 27.0
+offset_left = 62.0
 offset_top = 134.0
-offset_right = 220.0
+offset_right = 255.0
 offset_bottom = 191.0
 scale = Vector2(0.3, 0.297)
 theme_override_fonts/font = ExtResource("4_mq50u")
@@ -34,9 +35,9 @@ text = "scr:  "
 script = ExtResource("5_gps16")
 
 [node name="lives" type="Label" parent="."]
-offset_left = 99.0
+offset_left = 143.0
 offset_top = 133.0
-offset_right = 242.0
+offset_right = 286.0
 offset_bottom = 190.0
 scale = Vector2(0.3, 0.297)
 theme_override_fonts/font = ExtResource("4_mq50u")
@@ -58,5 +59,5 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_n18ot")
+stream = ExtResource("7_f5sm2")
 autoplay = true

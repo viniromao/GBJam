@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fu20l"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_1q8ot"]
-[ext_resource type="Texture2D" uid="uid://d4mwhsxx3r7x8" path="res://assets/mcafeelogo.png" id="2_ev1am"]
+[ext_resource type="Texture2D" uid="uid://cx7mgths36nxe" path="res://assets/player.png" id="3_aahvg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ry0ae"]
 shader = ExtResource("2_1q8ot")
@@ -16,10 +16,11 @@ script = ExtResource("1_fu20l")
 
 [node name="Texture" type="Sprite2D" parent="." groups=["player"]]
 material = SubResource("ShaderMaterial_ry0ae")
-position = Vector2(0.1, 0)
+position = Vector2(-1, 1)
 rotation = -1.5708
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_ev1am")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_aahvg")
+hframes = 2
 
 [node name="Muzzle" type="Marker2D" parent="." groups=["player"]]
 position = Vector2(11, 9.53674e-07)

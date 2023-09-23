@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="1_u62l8"]
 [ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="2_ghfv8"]
 [ext_resource type="Script" path="res://scripts/text.gd" id="3_gic28"]
-[ext_resource type="AudioStream" uid="uid://ihn3k6rds72b" path="res://assets/sfx&songs/main_theme.mp3" id="5_st83v"]
+[ext_resource type="AudioStream" uid="uid://dobflrfj2rdht" path="res://assets/sfx&songs/main_menu_ost.wav" id="5_8d0j8"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_34ijr")
@@ -70,7 +70,7 @@ text = "© 2023"
 script = ExtResource("3_gic28")
 
 [node name="main_theme" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_st83v")
+stream = ExtResource("5_8d0j8")
 autoplay = true
 
 [connection signal="timeout" from="blink" to="." method="_on_blink_timeout"]
