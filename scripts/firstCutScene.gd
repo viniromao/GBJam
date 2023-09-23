@@ -123,7 +123,7 @@ func _process(delta):
 			await timer.timeout
 			
 			$cat.stop()
-			$virus_attack.play()
+			audio_manager.play_music()
 			$popup.visible = true
 			if !errorPlayed:
 				errorPlayed =true

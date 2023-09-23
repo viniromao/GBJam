@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemy3.gd" id="1_sujuq"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_tapxf"]
-[ext_resource type="Texture2D" uid="uid://c6hx087n47mka" path="res://assets/Texto do seu parágrafo (40 × 40 px).png" id="3_x2jan"]
+[ext_resource type="Texture2D" uid="uid://bq7i1w3jtgfb1" path="res://assets/enemies.png" id="3_wru0m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0w26d"]
 resource_local_to_scene = true
@@ -10,7 +10,7 @@ shader = ExtResource("2_tapxf")
 shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6qh5"]
-size = Vector2(16, 16)
+size = Vector2(6, 8)
 
 [sub_resource type="Animation" id="Animation_w5vhr"]
 length = 0.001
@@ -56,10 +56,11 @@ script = ExtResource("1_sujuq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0w26d")
-rotation = 3.14159
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_x2jan")
+texture = ExtResource("3_wru0m")
 flip_h = true
+hframes = 4
+vframes = 4
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_m6qh5")

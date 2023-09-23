@@ -13,8 +13,8 @@ func die():
 func shoot():
 	if canShoot:
 		var newShot = shot.instantiate()
-		get_tree().current_scene.add_child(newShot)  # Add shot to the root of the current scene
-		newShot.global_position = self.global_position  # Set the initial position of the shot
+		get_tree().current_scene.add_child(newShot)
+		newShot.global_position = self.global_position 
 		
 		var viewport_size = get_viewport().get_visible_rect().size
 		if global_position.y < viewport_size.y / 2:

@@ -1,4 +1,4 @@
-extends Area2D
+class_name Laser extends Area2D
 
 @export var speed = 150
 @export var damage = 1
@@ -15,13 +15,17 @@ func _on_area_entered(area):
 		area.die()
 		queue_free()
 		
-	if area is Enemy:
+	if area is Enemy5:
 		area.die()
 		queue_free()
 		
 	if area is Enemy3:
 		area.die()
 		queue_free()
+		
+#	if area is Enemy4:
+#		area.die()
+#		queue_free()
 		
 	if area is Boss:
 		area.take_damage()

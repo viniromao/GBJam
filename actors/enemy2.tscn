@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://ffl8m68kiwq1"]
 
-[ext_resource type="Script" path="res://actors/enemy.gd" id="1_x17tw"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_7kc67"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_c2efk"]
-[ext_resource type="Texture2D" uid="uid://c6hx087n47mka" path="res://assets/Texto do seu parágrafo (40 × 40 px).png" id="2_rryqw"]
+[ext_resource type="Texture2D" uid="uid://bq7i1w3jtgfb1" path="res://assets/enemies.png" id="3_t3jal"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0w26d"]
 resource_local_to_scene = true
@@ -52,14 +52,15 @@ _data = {
 [node name="Enemy" type="Area2D"]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_x17tw")
+script = ExtResource("1_7kc67")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0w26d")
-rotation = 3.14159
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_rryqw")
+texture = ExtResource("3_t3jal")
 flip_h = true
+hframes = 2
+vframes = 2
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_m6qh5")

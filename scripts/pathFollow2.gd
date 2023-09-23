@@ -2,7 +2,7 @@ extends PathFollow2D
 
 @export var runSpeed = .2
 
-var follower = preload("res://actors/enemy2.tscn")
+var follower = preload("res://actors/enemy.tscn")
 
 func _ready():
 	var newFollower = follower.instantiate()

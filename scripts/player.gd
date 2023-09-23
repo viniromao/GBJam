@@ -5,7 +5,7 @@ signal killed
 
 @export var speed = 100
 @export var rate_of_fire := 0.25
-@export var lives := 3
+@export var lives := 6
 @export var invincible = false
 
 @onready var muzzle = $Muzzle

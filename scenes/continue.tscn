@@ -48,7 +48,7 @@ script = ExtResource("1_aadkb")
 layout_mode = 0
 offset_right = 160.0
 offset_bottom = 144.0
-color = Color(0, 0, 0, 1)
+color = Color(0.0156863, 0.0901961, 0.129412, 1)
 
 [node name="continue" type="Label" parent="."]
 layout_mode = 0
@@ -56,7 +56,7 @@ offset_left = 10.0
 offset_top = 43.0
 offset_right = 154.0
 offset_bottom = 66.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.4, 0.807843, 0.447059, 1)
 theme_override_fonts/font = ExtResource("2_fopro")
 theme_override_font_sizes/font_size = 16
 text = "CONTINUE?"
@@ -66,13 +66,15 @@ autostart = true
 
 [node name="number" type="Label" parent="."]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 74.0
-offset_right = 89.0
-offset_bottom = 97.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+offset_left = 60.0
+offset_top = 73.0
+offset_right = 101.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.4, 0.807843, 0.447059, 1)
 theme_override_fonts/font = ExtResource("2_fopro")
 theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(80, 72)

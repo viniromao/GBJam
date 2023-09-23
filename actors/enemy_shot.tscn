@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1hq6tnka0q7l"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_weeyy"]
-[ext_resource type="Texture2D" uid="uid://b88frj8cec0jl" path="res://assets/enemy_shot.png" id="2_5l8c1"]
+[ext_resource type="Script" path="res://scripts/enemy_shot.gd" id="1_jd2os"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_6ew3r"]
+[ext_resource type="Texture2D" uid="uid://bq7i1w3jtgfb1" path="res://assets/enemies.png" id="3_h2pqo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0w26d"]
 resource_local_to_scene = true
@@ -13,22 +13,26 @@ shader_parameter/active = false
 radius = 2.23607
 
 [node name="shot" type="Area2D"]
-collision_layer = 2
-collision_mask = 5
-script = ExtResource("1_weeyy")
+collision_layer = 64
+script = ExtResource("1_jd2os")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0w26d")
 rotation = 3.14159
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_5l8c1")
+texture = ExtResource("3_h2pqo")
 flip_h = true
+hframes = 4
+vframes = 4
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 2
 shape = SubResource("CircleShape2D_dwngp")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(15, 0)
 scale = Vector2(0.25, 0.25)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

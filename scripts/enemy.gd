@@ -1,4 +1,4 @@
-class_name EnemyShot extends Area2D
+class_name Enemy5 extends Area2D
 
 @export var speed = 150
 @export var damage = 1

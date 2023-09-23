@@ -47,6 +47,8 @@ func _ready():
 	player.global_position = spawn_player_pos.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.killed.connect(_on_player_killed)
+	scene_manager.set_last_scene("res://scenes/level2.tscn")
+
 
 func _process(delta):
 	mainTimer += delta
@@ -121,7 +123,6 @@ func decrease_lives():
 	lives -= 1
 
 func _on_player_killed():
-	pass
 #	await get_tree().create_timer(0.5).timeout
-#	get_tree().change_scene_to_file("res://scenes/continue.tscn")
+	get_tree().change_scene_to_file("res://scenes/continue.tscn")
 	

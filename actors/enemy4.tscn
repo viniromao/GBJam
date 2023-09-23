@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://dwa8yxo4j4p67"]
+
+[ext_resource type="Script" path="res://scripts/enemy3.gd" id="1_8rbkv"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_gb6ri"]
+[ext_resource type="Texture2D" uid="uid://bq7i1w3jtgfb1" path="res://assets/enemies.png" id="3_d2uxj"]
+[ext_resource type="Script" path="res://actors/rotate.gd" id="4_0prsd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybdya"]
+resource_local_to_scene = true
+shader = ExtResource("2_gb6ri")
+shader_parameter/active = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6qh5"]
+size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_mbqsw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_45md7"]
+resource_name = "damage"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_adcuh"]
+_data = {
+"RESET": SubResource("Animation_mbqsw"),
+"damage": SubResource("Animation_45md7")
+}
+
+[node name="Enemy4" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_8rbkv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ybdya")
+texture = ExtResource("3_d2uxj")
+flip_h = true
+hframes = 4
+vframes = 4
+frame = 3
+script = ExtResource("4_0prsd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m6qh5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(15, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_adcuh")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

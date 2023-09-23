@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpnn8f55l5flp"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_77da5"]
+[ext_resource type="PackedScene" uid="uid://b77e2sp5ruhpi" path="res://actors/player.tscn" id="2_1ngoq"]
+[ext_resource type="Shader" path="res://shaders/bg.gdshader" id="2_fc2yo"]
+[ext_resource type="Texture2D" uid="uid://uqx5xmkhx21c" path="res://assets/bg2.png" id="3_4ngj1"]
+[ext_resource type="Texture2D" uid="uid://dq8ip72buy4vr" path="res://assets/tastk_bar.png" id="3_oy7m4"]
+[ext_resource type="FontFile" uid="uid://dkntq8a46w3jl" path="res://assets/fonts/early_gameboy/Early GameBoy.ttf" id="4_mq50u"]
+[ext_resource type="Script" path="res://scripts/text.gd" id="5_gps16"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8gdp4"]
+shader = ExtResource("2_fc2yo")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.15
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_77da5")
+
+[node name="bg" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_8gdp4")
+offset_right = 161.0
+offset_bottom = 144.0
+texture = ExtResource("3_4ngj1")
+stretch_mode = 1
+
+[node name="task_bar" type="Sprite2D" parent="."]
+position = Vector2(80, 137)
+scale = Vector2(1, 0.7)
+texture = ExtResource("3_oy7m4")
+
+[node name="score" type="Label" parent="."]
+offset_left = 62.0
+offset_top = 134.0
+offset_right = 255.0
+offset_bottom = 191.0
+scale = Vector2(0.3, 0.297)
+theme_override_fonts/font = ExtResource("4_mq50u")
+text = "scr:  "
+script = ExtResource("5_gps16")
+
+[node name="lives" type="Label" parent="."]
+offset_left = 143.0
+offset_top = 133.0
+offset_right = 286.0
+offset_bottom = 190.0
+scale = Vector2(0.3, 0.297)
+theme_override_fonts/font = ExtResource("4_mq50u")
+text = "<3"
+script = ExtResource("5_gps16")
+
+[node name="Player" parent="." instance=ExtResource("2_1ngoq")]
+position = Vector2(19, 72)
+
+[node name="PlayerSpawnPos" type="Marker2D" parent="."]
+position = Vector2(19, 72)
+scale = Vector2(0.731204, 0.278042)
+
+[node name="LaserContainer" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 72)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
