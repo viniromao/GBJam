@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5xd3thlqgx1u"]
+
+[ext_resource type="Script" path="res://scripts/PathFollow.gd" id="1_f12b8"]
+
+[sub_resource type="Curve2D" id="Curve2D_ebrjg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 272, 16, 0, 0, 0, 0, 156, 105, 0, 0, 0, 0, 11, 109, 0, 0, 0, 0, 14, 7, 0, 0, 0, 0, 145, 11, 0, 0, 0, 0, 268, 101)
+}
+point_count = 6
+
+[node name="path51" type="Path2D"]
+curve = SubResource("Curve2D_ebrjg")
+
+[node name="path" type="PathFollow2D" parent="."]
+position = Vector2(272, 16)
+rotates = false
+cubic_interp = false
+loop = false
+script = ExtResource("1_f12b8")

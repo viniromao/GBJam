@@ -2,7 +2,7 @@ extends Node
 
 var audio_stream_player = AudioStreamPlayer.new()
 var music_stream = preload("res://assets/sfx&songs/The_Virus_Appears.wav")
-var music_stream2 = preload("res://assets/sfx&songs/win.mp3")
+var music_stream2 = preload("res://assets/sfx&songs/victory.wav")
 
 func _ready():
 	add_child(audio_stream_player)

@@ -35,6 +35,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
+	
+	
 
 func shoot():
 	laser_shot.emit(laser_scene, muzzle.global_position)
