@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://tq5eu5is3qhh"]
+[gd_scene load_steps=13 format=3 uid="uid://tq5eu5is3qhh"]
 
 [ext_resource type="PackedScene" uid="uid://b77e2sp5ruhpi" path="res://actors/player.tscn" id="1_1laxo"]
 [ext_resource type="Script" path="res://scripts/bonus_scene.gd" id="1_42a8d"]
 [ext_resource type="Texture2D" uid="uid://5g8kgqg5twhy" path="res://assets/race_tiles.png" id="1_47obv"]
 [ext_resource type="Script" path="res://scenes/race_movement.gd" id="1_lvk2n"]
 [ext_resource type="Texture2D" uid="uid://c73q6arca0x6k" path="res://assets/race_tiles2.png" id="3_hyox6"]
-[ext_resource type="AudioStream" uid="uid://csn3r62e6cj2c" path="res://assets/sfx&songs/glitchy_battle.wav" id="6_eor1p"]
+[ext_resource type="AudioStream" uid="uid://bb8y8tgy6x2gt" path="res://assets/sfx&songs/glitchy_battle.mp3" id="6_uy7s4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_beuej"]
 texture = ExtResource("1_47obv")
@@ -106,6 +106,42 @@ physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_beuej")
 sources/3 = SubResource("TileSetAtlasSource_c7ua4")
 
+[sub_resource type="Animation" id="Animation_2167v"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8flx4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm5re"]
+_data = {
+"RESET": SubResource("Animation_8flx4"),
+"fade_out": SubResource("Animation_2167v")
+}
+
 [node name="bonus_scene" type="Node2D"]
 light_mask = 2
 script = ExtResource("1_42a8d")
@@ -133,5 +169,19 @@ layer_0/tile_data = PackedInt32Array(524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 5
 script = ExtResource("1_lvk2n")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_eor1p")
+stream = ExtResource("6_uy7s4")
 autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 33232.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jm5re")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="TileMap" method="_on_animation_player_animation_finished"]
