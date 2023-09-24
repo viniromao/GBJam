@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scripts/bonus_scene.gd" id="1_42a8d"]
 [ext_resource type="Texture2D" uid="uid://5g8kgqg5twhy" path="res://assets/race_tiles.png" id="1_47obv"]
 [ext_resource type="Script" path="res://scenes/race_movement.gd" id="1_lvk2n"]
-[ext_resource type="AudioStream" uid="uid://vmnpkgn8qc11" path="res://assets/sfx&songs/race.mp3" id="2_np3hx"]
 [ext_resource type="Texture2D" uid="uid://c73q6arca0x6k" path="res://assets/race_tiles2.png" id="3_hyox6"]
+[ext_resource type="AudioStream" uid="uid://csn3r62e6cj2c" path="res://assets/sfx&songs/glitchy_battle.wav" id="6_eor1p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_beuej"]
 texture = ExtResource("1_47obv")
@@ -133,4 +133,5 @@ layer_0/tile_data = PackedInt32Array(524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 5
 script = ExtResource("1_lvk2n")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_np3hx")
+stream = ExtResource("6_eor1p")
+autoplay = true
