@@ -1,13 +1,20 @@
 extends Area2D
 
-@export var speed = 150
+@export var speed = 90
 @export var damage = 1
 
-var direction = Vector2(1, 0)  # Default direction
+var direction = Vector2(0, 1)  # Default direction
 	
 func set_direction(new_direction):
 	direction = new_direction.normalized()
 	$Sprite2D.rotation = direction.angle()
+	
+func _ready():
+	randomize()
+
+	var random_number = randi() % 161
+
+	self.position.x = random_number
 	
 func set_speed(new_speed):
 	speed = new_speed

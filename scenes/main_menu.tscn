@@ -52,7 +52,7 @@ offset_bottom = 143.0
 theme_override_colors/font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("2_ghfv8")
 theme_override_font_sizes/font_size = 8
-text = " Kessel, Eduga,
+text = " Neo32, Eduga,
 Vityusha, Juice
  Ivanez"
 horizontal_alignment = 1

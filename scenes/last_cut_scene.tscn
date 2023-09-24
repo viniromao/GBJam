@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp3pt7kj7fuu"]
+
+[ext_resource type="Script" path="res://scripts/transition.gd" id="1_nwjdv"]
+[ext_resource type="FontFile" uid="uid://b6fjyba1rccni" path="res://assets/fonts/public_pixel/PublicPixel.ttf" id="2_k5oep"]
+[ext_resource type="Script" path="res://scripts/light_text.gd" id="3_q8ai6"]
+[ext_resource type="AudioStream" uid="uid://g5gt0gqtdopg" path="res://assets/sfx&songs/mouse_click.wav" id="4_1wdxf"]
+[ext_resource type="AudioStream" uid="uid://deruig3xodbll" path="res://assets/sfx&songs/pc_noise_1.wav" id="5_xr5ie"]
+[ext_resource type="AudioStream" uid="uid://brny704taxqa0" path="res://assets/sfx&songs/text_display_sound.wav" id="6_hcfek"]
+
+[node name="startup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nwjdv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 72)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 707.312
+autostart = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.0313726, 0.0941176, 0.12549, 1)
+polygon = PackedVector2Array(0, -1, -22, 30, -28, 102, -3, 189, 130, 180, 217, 136, 197, 40, 153, -16, 63, -34)
+
+[node name="text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 106.0
+offset_bottom = 35.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_k5oep")
+theme_override_font_sizes/font_size = 8
+script = ExtResource("3_q8ai6")
+
+[node name="text2" type="Label" parent="."]
+visible = false
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 294.0
+offset_bottom = 30.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_k5oep")
+theme_override_font_sizes/font_size = 8
+text = "Level 1 viruses succesfully cleaned!"
+script = ExtResource("3_q8ai6")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1wdxf")
+pitch_scale = 0.5
+
+[node name="dots_timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="computer_noise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xr5ie")
+
+[node name="text_timer" type="Timer" parent="."]
+wait_time = 0.08
+
+[node name="text_timer2" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="terminal_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hcfek")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="dots_timer" to="." method="_on_dots_timer_timeout"]
+[connection signal="timeout" from="text_timer" to="." method="_on_text_timer_timeout"]
+[connection signal="timeout" from="text_timer2" to="." method="_on_text_timer_2_timeout"]

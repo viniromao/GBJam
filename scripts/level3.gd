@@ -15,6 +15,8 @@ func pad_with_zeros(number, width):
 var score = 0
 var lives = 6
 
+var boss_thing = 0
+
 var timer = 0
 var timer2 = 0
 var mainTimer = 0
@@ -40,6 +42,7 @@ var path11 = preload("res://paths/path11.tscn")
 var path50 = preload("res://paths/path50.tscn")
 var path51 = preload("res://paths/path51.tscn")
 var enemy_scene = preload("res://actors/enemy.tscn")
+var final_boss = preload("res://actors/final_boss.tscn")
 
 var path_follow51 = preload("res://paths/path51.tscn")
 var path_follow52 = preload("res://paths/path52.tscn")
@@ -61,8 +64,12 @@ var path_follow67 = preload("res://paths/path67.tscn")
 var path_follow68 = preload("res://paths/path68.tscn")
 var path_follow69 = preload("res://paths/path69.tscn")
 var path_follow70 = preload("res://paths/path70.tscn")
+var path_follow71 = preload("res://paths/path71.tscn")
+var sky_shot = preload("res://actors/fall_shot.tscn")
 var cursorPosition1 = Vector2(20,70)
 var cursorPosition2 = Vector2(300,70)
+
+var boss_deployed = false
 
 var player = null
 
@@ -147,12 +154,12 @@ func spawnThings(delta):
 		timer2 = 0
 	if (timer > spawnTime  && mainTimer > 55  && mainTimer < 65):
 		var path65 = path_follow65.instantiate()
-		path65.get_node("path").set_follower("res://actors/enemy4.tscn") 
+		path65.get_node("path").set_follower("res://actors/enemy8.tscn") 
 		add_child(path65)
 		timer = 0
 	if (timer > spawnTime  && mainTimer > 65  && mainTimer < 75):
 		var path66 = path_follow66.instantiate()
-		path66.get_node("path").set_follower("res://actors/enemy4.tscn") 
+		path66.get_node("path").set_follower("res://actors/enemy7.tscn") 
 		add_child(path66)
 		timer = 0
 	if (timer > spawnTime  && mainTimer > 75  && mainTimer < 85):
@@ -162,21 +169,31 @@ func spawnThings(delta):
 		timer = 0
 	if (timer > spawnTime  && mainTimer > 85  && mainTimer < 95):
 		var path68 = path_follow68.instantiate()
-		path68.get_node("path").set_follower("res://actors/enemy4.tscn") 
+		path68.get_node("path").set_follower("res://actors/enemy3.tscn") 
 		add_child(path68)
 		timer = 0
 	if (timer > spawnTime  && mainTimer > 95  && mainTimer < 105):
 		var path69 = path_follow69.instantiate()
-		path69.get_node("path").set_follower("res://actors/enemy4.tscn") 
+		path69.get_node("path").set_follower("res://actors/enemy8.tscn") 
 		add_child(path69)
 		timer = 0
 	if (timer > spawnTime  && mainTimer > 105  && mainTimer < 115):
 		var path70 = path_follow70.instantiate()
-		path70.get_node("path").set_follower("res://actors/enemy4.tscn") 
+		path70.get_node("path").set_follower("res://actors/enemy7.tscn") 
 		add_child(path70)
 		timer = 0
+	if (mainTimer > 115):
+		if !boss_deployed:
+			$skyshot_timer.start()
+			boss_deployed = true
+			var path71 = path_follow71.instantiate()
+			path71.get_node("path").set_follower("res://actors/final_boss.tscn")
+			path71.get_node("path").set_delete_on_finish(false)  
+			add_child(path71)
+			boss_thing = path71.get_node("path/Boss")
+		if (boss_thing.isDead):
+			get_tree().change_scene_to_file("res://scenes/final_cut_scene.tscn")
 	
-
 func win():
 	if !isMovingToPosition1 && !isMovingToPosition2: 
 		audio_manager.play_music2()
@@ -190,5 +207,8 @@ func decrease_lives():
 	lives -= 1
 
 func _on_player_killed():
-	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_file("res://scenes/continue.tscn")
+		get_tree().change_scene_to_file("res://scenes/continue.tscn")
+
+
+func _on_skyshot_timer_timeout():
+	add_child(sky_shot.instantiate())

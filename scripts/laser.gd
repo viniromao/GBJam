@@ -31,6 +31,10 @@ func _on_area_entered(area):
 		area.take_damage()
 		queue_free()
 		
+	if area is FinalBoss:
+		area.take_damage()
+		queue_free()
+		
 	var root_script = get_tree().current_scene
 	if root_script:
 		root_script.increase_score(20)

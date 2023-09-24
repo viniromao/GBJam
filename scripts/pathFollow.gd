@@ -6,6 +6,8 @@ var delete_on_finish = true
 
 func set_follower(scene_path):
 	follower = load(scene_path)
+	var boss_instance = follower.instantiate()
+	add_child(boss_instance)
 	
 func set_delete_on_finish(delete):
 	delete_on_finish = delete

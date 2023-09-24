@@ -56,5 +56,4 @@ autoplay = true
 [node name="skyshot_timer" type="Timer" parent="."]
 wait_time = 0.5
 
-[connection signal="killed" from="Player" to="." method="_on_player_killed"]
 [connection signal="timeout" from="skyshot_timer" to="." method="_on_skyshot_timer_timeout"]

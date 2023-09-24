@@ -1,13 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://l6lfafwmyy45"]
+[gd_scene load_steps=13 format=3 uid="uid://c5naup426us7a"]
 
-[ext_resource type="Script" path="res://scripts/boss.gd" id="1_sfkay"]
-[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_dnrts"]
-[ext_resource type="Texture2D" uid="uid://2m8obsft5w3j" path="res://assets/boss2.png" id="3_h406q"]
-[ext_resource type="Script" path="res://actors/big_guy.gd" id="4_56qqu"]
+[ext_resource type="Script" path="res://actors/final_boss.gd" id="1_etivc"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_x8r1c"]
+[ext_resource type="Texture2D" uid="uid://2m8obsft5w3j" path="res://assets/boss2.png" id="3_83kda"]
+[ext_resource type="Script" path="res://actors/big_guy.gd" id="4_uahgj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0w26d"]
 resource_local_to_scene = true
-shader = ExtResource("2_dnrts")
+shader = ExtResource("2_x8r1c")
 shader_parameter/active = false
 
 [sub_resource type="Animation" id="Animation_i48jb"]
@@ -91,13 +91,13 @@ _data = {
 [node name="Boss" type="Area2D"]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_sfkay")
+script = ExtResource("1_etivc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0w26d")
-texture = ExtResource("3_h406q")
+texture = ExtResource("3_83kda")
 hframes = 4
-script = ExtResource("4_56qqu")
+script = ExtResource("4_uahgj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
